@@ -9,7 +9,7 @@ import com.masai.exception.BankAccountNotFound;
 public interface BankAccountService {
 
 	
-	public Wallet addAccount(BankAccount bankAccount);
+	public String addAccount(BankAccount bankAccount);
 	
 	public Wallet removeAccount(BankAccount bankAccount)throws BankAccountNotFound;
 	
