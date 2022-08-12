@@ -3,9 +3,12 @@ package com.masai.service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.masai.entities.Customer;
 import com.masai.entities.Wallet;
 
+@Service
 public class WalletServiceImpl implements WalletService{
 
 	@Override
