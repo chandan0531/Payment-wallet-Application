@@ -38,6 +38,5 @@ public class BankAccount {
 	private double balance;
 	
 	@ManyToOne
-	@JsonIgnore
 	private Wallet wallet;	
 }

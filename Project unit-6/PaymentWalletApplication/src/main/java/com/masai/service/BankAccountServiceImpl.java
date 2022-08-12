@@ -2,25 +2,19 @@ package com.masai.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import com.masai.entities.BankAccount;
 import com.masai.entities.Wallet;
 import com.masai.repository.BankAccountDao;
-import com.masai.repository.TransactionDao;
-import com.masai.repository.WalletDao;
+
 
 @Service
 public class BankAccountServiceImpl implements BankAccountService {
 
 	@Autowired
 	BankAccountDao bankAccDao;
-	
-	@Autowired
-	TransactionDao transDao;
-	
-	@Autowired
-	WalletDao walletDao;
 	
 	
 	@Override

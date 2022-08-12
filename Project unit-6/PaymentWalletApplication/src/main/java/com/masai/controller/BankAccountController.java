@@ -10,16 +10,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.entities.BankAccount;
+import com.masai.repository.BankAccountDao;
+import com.masai.service.BankAccountService;
 import com.masai.service.BankAccountServiceImpl;
 
 @RestController
 public class BankAccountController {
 
 	@Autowired
-	BankAccountServiceImpl bankService;
+    private BankAccountService bankService;
+
 	
 	@PostMapping("/banks")
 	ResponseEntity<String> addAccount(@Valid @RequestBody BankAccount bankAccount){
+		
 		
 	return new ResponseEntity<String>(bankService.addAccount(bankAccount),HttpStatus.CREATED);
 	}
