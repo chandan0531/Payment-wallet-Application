@@ -38,9 +38,9 @@ public class WalletServiceImpl implements WalletService{
 	}
 
 	@Override
-	public BigDecimal showBalance(String mobileno) {
+	public BigDecimal showBalance(String mobileNumber) {
 		
-		Optional<Customer> otp = customerDao.findByMobileNumber(mobileno);
+		Optional<Customer> otp = customerDao.findByMobileNumber(mobileNumber);
 		
 		if(otp.isPresent()) {
 			return otp.get().getWallet().getBalance();
