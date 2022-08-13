@@ -15,6 +15,11 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	@Override
 	public BillPayment addBillPayment(BillPayment payment) {
 		
+<<<<<<< HEAD
+=======
+		System.out.println("demo");
+		
+>>>>>>> b65ea6ddd3dac65b1e0fd5bdb11c3d540807626b
 		return null;
 	}
 
