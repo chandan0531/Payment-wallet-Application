@@ -3,24 +3,37 @@ package com.masai.service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.entities.Customer;
 import com.masai.entities.Wallet;
+import com.masai.repository.BankAccountDao;
+import com.masai.repository.TransactionDao;
 
 @Service
 public class WalletServiceImpl implements WalletService{
 
+	@Autowired
+	private BankAccountDao bankDao;
+	
+	@Autowired
+	private TransactionDao transactionDao;
+	
+	
+	
 	@Override
 	public Customer createAccount(String name, String mobileno, BigDecimal amount) {
-		// TODO Auto-generated method stub
+		
+		
 		return null;
 	}
 
 	@Override
-	public Customer showBalance(String mobileno) {
-		// TODO Auto-generated method stub
-		return null;
+	public double showBalance(String mobileno) {
+
+		
+		return 2;
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public interface WalletService {
 	
 	public Customer createAccount(String name, String mobileno, BigDecimal amount);
 	
-	public Customer showBalance(String mobileno);
+	public double showBalance(String mobileno);
 	
 	public Customer fundTransfer(String sourceMobileNo, String targetMobileNo, BigDecimal amount);
 	
