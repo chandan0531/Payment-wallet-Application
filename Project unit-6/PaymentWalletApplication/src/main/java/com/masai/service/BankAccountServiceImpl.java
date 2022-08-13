@@ -15,14 +15,15 @@ import com.masai.repository.BankAccountDao;
 public class BankAccountServiceImpl implements BankAccountService {
 
 	@Autowired
-	@JsonIgnore
+//	@JsonIgnore
 	BankAccountDao bankAccDao;
 	
 	@Override
 	public Wallet addAccount(BankAccount bankAccount) {
 		
-    BankAccount bank =	bankAccDao.findByBankNameAndWalletId(bankAccount.getBankName(), bankAccount.getAccountNo());
-	
+//    BankAccount bank =	bankAccDao.findBybankNameAndwalletId(bankAccount.getBankName(), bankAccount.getAccountNo());
+		BankAccount bank = null;
+		
 	if(bank!=null) {
 		throw new BankAccountAlreadyExist("Bank Account with this details already exist");
 	}

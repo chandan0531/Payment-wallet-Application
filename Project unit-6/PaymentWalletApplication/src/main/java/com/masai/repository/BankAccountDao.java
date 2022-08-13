@@ -8,6 +8,6 @@ import com.masai.entities.BankAccount;
 @Repository
 public interface BankAccountDao extends JpaRepository<BankAccount, Integer> {
 
-	public BankAccount findByBankNameAndWalletId(String bankName, Integer walletId);
+//	public BankAccount findBybankNameAndwalletId(String bankName, Integer walletId);
 	
 }

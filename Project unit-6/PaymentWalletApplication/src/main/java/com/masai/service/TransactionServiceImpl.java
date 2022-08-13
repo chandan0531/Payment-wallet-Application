@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.masai.entities.Transaction;
 import com.masai.entities.Wallet;
 import com.masai.repository.TransactionDao;
+import com.masai.repository.WalletDao;
 
 
 @Service
@@ -18,6 +19,9 @@ public class TransactionServiceImpl implements TransactionService{
 	@Autowired
 	private TransactionDao tDao;
 	
+	
+	@Autowired
+	private WalletDao wDao;
 	
 	@Override
 	public Transaction addTansaction(Transaction trans) {
@@ -32,6 +36,11 @@ public class TransactionServiceImpl implements TransactionService{
 	@Override
 	public List<Transaction> viewAllTransactions(Wallet wallet) {
 		// TODO Auto-generated method stub
+		
+		Wallet wall=   wDao.findById(wallet.getWalletId()).orElse(null);
+		
+		
+		
 		return null;
 	}
 
