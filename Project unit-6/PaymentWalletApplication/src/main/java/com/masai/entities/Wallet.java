@@ -23,7 +23,7 @@ public class Wallet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer walletId;
 	
-	@Min(value = 0, message="Balance Should be greater than zero")
+	@Min(value = 0, message="Balance must be minimum zero")
 	@NotNull
 	private BigDecimal balance;
 	
