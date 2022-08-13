@@ -1,5 +1,8 @@
 package com.masai.controller;
 
+
+
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +26,11 @@ public class BankAccountController {
 	@Autowired
 	BankAccountDao bankDao;
 	
+
+	
 	@PostMapping("/banks")
-	ResponseEntity<String> addAccount(@Valid @RequestBody BankAccount bankAccount){
+    public String addAccount(@Valid @RequestBody BankAccount bankAccount){
 		
-		
-   return new ResponseEntity<String>(bankService.addAccount(bankAccount),HttpStatus.CREATED);
+		return bankService.addAccount(bankAccount);
 	}
 }
