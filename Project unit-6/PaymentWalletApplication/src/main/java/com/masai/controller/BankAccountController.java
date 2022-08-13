@@ -20,11 +20,13 @@ public class BankAccountController {
 	@Autowired
     private BankAccountService bankService;
 
+	@Autowired
+	BankAccountDao bankDao;
 	
 	@PostMapping("/banks")
 	ResponseEntity<String> addAccount(@Valid @RequestBody BankAccount bankAccount){
 		
 		
-	return new ResponseEntity<String>(bankService.addAccount(bankAccount),HttpStatus.CREATED);
+   return new ResponseEntity<String>(bankService.addAccount(bankAccount),HttpStatus.CREATED);
 	}
 }

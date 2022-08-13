@@ -11,11 +11,11 @@ public interface BankAccountService {
 	
 	public String addAccount(BankAccount bankAccount);
 	
-	public Wallet removeAccount(BankAccount bankAccount)throws BankAccountNotFound;
+//	public Wallet removeAccount(BankAccount bankAccount)throws BankAccountNotFound;
 	
-	public BankAccount viewAccount(Wallet wallet) throws BankAccountNotFound;
+//	public BankAccount viewAccount(Wallet wallet) throws BankAccountNotFound;
 	
-	public List<BankAccount> viewAllAccount(Wallet wallet) throws BankAccountNotFound;
+//	public List<BankAccount> viewAllAccount(Wallet wallet) throws BankAccountNotFound;
 	
 	
 	
