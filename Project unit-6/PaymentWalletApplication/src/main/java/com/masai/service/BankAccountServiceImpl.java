@@ -1,12 +1,16 @@
 package com.masai.service;
 
-import java.util.List;
+
+
+import java.util.Optional;
+
+import javax.security.auth.login.AccountNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import com.masai.entities.BankAccount;
-import com.masai.entities.Wallet;
+import com.masai.exception.BankAccountNotFound;
 import com.masai.repository.BankAccountDao;
 
 
@@ -20,46 +24,43 @@ public class BankAccountServiceImpl implements BankAccountService {
 	@Override
 	public String addAccount(BankAccount bankAccount) {
 
+
+		   BankAccount newBank = bankAccDao.findByBankNameAndWallet(bankAccount.getBankName(),bankAccount.getWallet().getWalletId());
+		   if(newBank!=null)
+			   return "Account Already Exists";
+      
+	
+		   
+			BankAccount newAccount = new BankAccount();
 		
-		
-	    BankAccount bank =	bankAccDao.findByBankNameAndWalletId(bankAccount.getBankName(), bankAccount.getWallet().getWalletId());
-		
-		if(bank!=null) {
-			return "Account exists";
+			newAccount.setIfscCode(bankAccount.getIfscCode());
+			newAccount.setBalance(bankAccount.getBalance());
+			newAccount.setBankName(bankAccount.getBankName());
+			
+			newAccount.setWallet(bankAccount.getWallet());
+			
+			
+			bankAccDao.save(newAccount);
+			
+			return newAccount.getBankName()+" is successfully added..";
+}
+
+
+	@Override
+	public BankAccount getAccountByAccountNumber(Integer accountNumber) throws AccountNotFoundException {
+	
+		Optional<BankAccount> opt = bankAccDao.findById(accountNumber);
+	    
+		if(opt.isPresent()) {
+			return opt.get();
 		}
-	   
 		
-		BankAccount acc = new BankAccount();
-		
-		acc.setBankName(bankAccount.getBankName());
-		acc.setIfscCode(bankAccount.getIfscCode());
-		acc.setBalance(bankAccount.getBalance());
-		
-		acc.setWallet(bankAccount.getWallet());
-		
-		bankAccDao.save(acc);
-		
-		return "added..";
+	    throw new BankAccountNotFound("Bank Account With not Found with given account number "+accountNumber);
 	}
-
-	@Override
-	public Wallet removeAccount(BankAccount bankAccount) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public BankAccount viewAccount(Wallet wallet) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BankAccount> viewAllAccount(Wallet wallet) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	
+	
+	
 	
 	
 }

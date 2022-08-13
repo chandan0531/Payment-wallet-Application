@@ -10,7 +10,6 @@ public class PaymentWalletApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PaymentWalletApplication.class, args);
-		System.out.println("hi suresh jungade");
 	}
 
 }
