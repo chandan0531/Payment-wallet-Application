@@ -57,11 +57,6 @@ public class WalletController {
 
 	}
 	
-	@GetMapping("getbank/{walletId}")
-	public List<BankAccount> getBankController(@PathVariable Integer walletId,@RequestParam(required = false) String key) {
-		
-		return walletService.bankAccountByWalletId(walletId);
-		
-	}
+	
 
 }

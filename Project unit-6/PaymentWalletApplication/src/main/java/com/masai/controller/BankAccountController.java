@@ -62,9 +62,9 @@ public class BankAccountController {
 	
 	
 	@GetMapping("/wallet/{walletId}")
-	ResponseEntity<List<BankAccount>> BankByWalletId(@PathVariable Integer walletId){
+	ResponseEntity<List<BankAccount>> BankByWalletId(@PathVariable Integer walletId,@RequestParam String key){
 		
-	List<BankAccount> bankaccount =	walletService.bankAccountByWalletId(walletId);
+	List<BankAccount> bankaccount =	walletService.bankAccountByWalletId(walletId,key);
 		
 	return new ResponseEntity<List<BankAccount>>(bankaccount,HttpStatus.OK);
 	}
