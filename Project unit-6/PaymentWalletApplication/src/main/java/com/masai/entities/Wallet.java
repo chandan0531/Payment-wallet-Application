@@ -38,7 +38,7 @@ public class Wallet {
 	@OneToMany
 	private List<BankAccount> bankAccount = new ArrayList<>();
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Customer customer;
 	
 	@JsonIgnore
