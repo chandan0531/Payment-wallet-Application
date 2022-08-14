@@ -1,10 +1,14 @@
 package com.masai.controller;
 
+import javax.security.auth.login.AccountNotFoundException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +33,22 @@ public class BankAccountController {
 	}
 	
 	
+	@GetMapping("/bank/{accountNumber}")
+	ResponseEntity<BankAccount> searchBankAccountByAccountNo(@PathVariable Integer accountNumber) throws AccountNotFoundException{
+		
+	BankAccount bankacc =	bankService.getAccountByAccountNumber(accountNumber);
+		
+	return new ResponseEntity<>(bankacc,HttpStatus.ACCEPTED);
+	}
 	
+	
+	@DeleteMapping("/bank/{accountNumber}")
+	ResponseEntity<String> deleteBankAccount(@PathVariable Integer accountNumber){
+		
+		
+	 String bankacc = 	bankService.removeAccount(accountNumber);
+		
+	 return new ResponseEntity<String>(bankacc,HttpStatus.OK);
+	}
 	
 }
