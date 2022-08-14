@@ -12,7 +12,7 @@ public interface WalletService {
 	
 	public Customer createAccount(Customer customer);
 	
-	public BigDecimal showBalance(String mobileno) throws InvalidAccountException;
+	//public double showBalance(String mobileno) throws InvalidAccountException;
 	
 	//public Customer fundTransfer(String sourceMobileNo, String targetMobileNo, BigDecimal amount);
 	
@@ -21,7 +21,7 @@ public interface WalletService {
 	
 	//public Customer updateAccount(Customer customer);
 	
-	public Customer addMoney(Wallet wallet,double amount);
+	public String addMoney(double amount, String key,Integer Accno);
 	
 	public List<BankAccount> bankAccountByWalletId(Integer walletId);
 	
