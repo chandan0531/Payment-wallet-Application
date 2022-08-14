@@ -9,17 +9,16 @@ import com.masai.exception.InvalidAccountException;
 
 public interface WalletService {
 	
-	public Customer createAccount(String name, String mobileno, BigDecimal amount);
+	public Customer createAccount(Customer customer);
 	
 	public BigDecimal showBalance(String mobileno) throws InvalidAccountException;
 	
-	public Customer fundTransfer(String sourceMobileNo, String targetMobileNo, BigDecimal amount);
+	//public Customer fundTransfer(String sourceMobileNo, String targetMobileNo, BigDecimal amount);
 	
-	public Customer depositAmount(String mobileno, BigDecimal amount);
+	//public Customer depositAmount(String mobileno, BigDecimal amount);
 	
-	public List<Customer> getList();
 	
-	public Customer updateAccount(Customer customer);
+	//public Customer updateAccount(Customer customer);
 	
 	public Customer addMoney(Wallet wallet,double amount);
 
