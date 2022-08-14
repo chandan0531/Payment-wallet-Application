@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.entities.BankAccount;
+import com.masai.entities.UserSession;
 import com.masai.entities.Wallet;
 import com.masai.exception.BankAccountNotFound;
 import com.masai.exception.WalletNotFound;
 import com.masai.repository.BankAccountDao;
+import com.masai.repository.UserSessionDao;
 import com.masai.repository.WalletDao;
 
 
@@ -27,9 +29,11 @@ public class BankAccountServiceImpl implements BankAccountService {
 	@Autowired
 	WalletDao walletdao;
 	
+	@Autowired
+	UserSessionDao sessionDao;
 	
 	@Override
-	public String addAccount(BankAccount bankAccount) {
+	public String addAccount(BankAccount bankAccount, String key) {
 
 
 		   BankAccount newBank = bankAccDao.findByBankNameAndWallet(bankAccount.getBankName(),bankAccount.getWallet().getWalletId());
@@ -37,17 +41,24 @@ public class BankAccountServiceImpl implements BankAccountService {
 			   return "Account Already Exists";
       
 	
+		   Optional<UserSession> currentUser =  sessionDao.findByUuid(key);
 		   
-			BankAccount newAccount = new BankAccount();
-		
-			newAccount.setIfscCode(bankAccount.getIfscCode());
-			newAccount.setBalance(bankAccount.getBalance());
-			newAccount.setBankName(bankAccount.getBankName());
-			
-			newAccount.setWallet(bankAccount.getWallet());
-			
-			
-			return newAccount.getBankName()+" is successfully added..";
+		   if(currentUser.isPresent()) {
+
+			   BankAccount newAccount = new BankAccount();
+				
+				newAccount.setIfscCode(bankAccount.getIfscCode());
+				newAccount.setBalance(bankAccount.getBalance());
+				newAccount.setBankName(bankAccount.getBankName());
+				
+				newAccount.setWallet(bankAccount.getWallet());
+				
+				bankAccDao.save(newAccount);
+				
+				return newAccount.getBankName()+" is successfully added..";
+		   }
+		   
+			return "not found";
 }
 
 
@@ -65,11 +76,13 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 
 	@Override
-	public String removeAccount(Integer accountNumber) throws BankAccountNotFound {
+	public String removeAccount(Integer accountNumber, String key) throws BankAccountNotFound {
 	
+	Optional<UserSession> user = sessionDao.findByUuid(key);
 		
-		  Optional<BankAccount> account =    bankAccDao.findByAccountNo(accountNumber);
-    
+	if(user.isPresent()) {
+		 Optional<BankAccount> account =    bankAccDao.findByAccountNo(accountNumber);
+		    
 		  if(!account.isPresent()) {
 			  throw new BankAccountNotFound("bank account not found in our database");
 			  
@@ -78,6 +91,9 @@ public class BankAccountServiceImpl implements BankAccountService {
 		  bankAccDao.deleteById(accountNumber);
 		  
 		  return "Bank Account deleted  Successfully";
+	}
+	
+	return "wrong key";	 
 	}
 
 	@Override

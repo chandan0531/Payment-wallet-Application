@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.entities.BankAccount;
@@ -33,10 +34,10 @@ public class BankAccountController {
 
 	
 	@PostMapping("/banks")
-	ResponseEntity<String> addAccount(@Valid @RequestBody BankAccount bankAccount){
+	ResponseEntity<String> addAccount(@Valid @RequestBody BankAccount bankAccount, @RequestParam String key){
 		
 		
-	return new ResponseEntity<String>(bankService.addAccount(bankAccount),HttpStatus.CREATED);
+	return new ResponseEntity<String>(bankService.addAccount(bankAccount,key),HttpStatus.CREATED);
 	}
 	
 	
@@ -50,10 +51,10 @@ public class BankAccountController {
 	
 	
 	@DeleteMapping("/bank/{accountNumber}")
-	ResponseEntity<String> deleteBankAccount(@PathVariable Integer accountNumber){
+	ResponseEntity<String> deleteBankAccount(@PathVariable Integer accountNumber, @RequestParam String key){
 		
 		
-	 String bankacc = 	bankService.removeAccount(accountNumber);
+	 String bankacc = 	bankService.removeAccount(accountNumber,key);
 		
 	 return new ResponseEntity<String>(bankacc,HttpStatus.OK);
 	}
