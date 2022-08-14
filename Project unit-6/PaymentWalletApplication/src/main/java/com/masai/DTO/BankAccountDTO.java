@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BankAccount {
+public class BankAccountDTO {
 
 	private Integer accountNo;
 	private String ifscCode;
