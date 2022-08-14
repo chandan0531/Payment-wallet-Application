@@ -1,12 +1,9 @@
 package com.masai.service;
 
-import java.math.BigDecimal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.entities.BillPayment;
-import com.masai.entities.Transaction;
 import com.masai.repository.BillPaymentDao;
 import com.masai.repository.TransactionDao;
 import com.masai.repository.WalletDao;
