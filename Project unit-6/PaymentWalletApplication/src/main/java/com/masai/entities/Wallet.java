@@ -33,12 +33,12 @@ public class Wallet {
 	
 	@Min(value = 0, message="Balance Should be greater than zero")
 	@NotNull
-	private BigDecimal balance;
+	private double balance;
 	
 	@OneToMany
 	private List<BankAccount> bankAccount = new ArrayList<>();
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Customer customer;
 	
 	@JsonIgnore
