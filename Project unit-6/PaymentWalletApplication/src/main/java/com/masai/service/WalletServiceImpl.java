@@ -86,6 +86,7 @@ public class WalletServiceImpl implements WalletService{
 					count++;
 					ListofBank.setBalance(ListofBank.getBalance()-amount);
 					wallet.setBalance(ListofBank.getBalance()+amount);
+					
 				}else {
 					throw new InsuficientBalance("Balance is not Sufficient in Bank");
 				}
@@ -97,6 +98,26 @@ public class WalletServiceImpl implements WalletService{
 		}
 		
 		return amount+" Rupee is Credited into Wallet";
+	}
+
+
+
+
+
+	@Override
+	public Customer addMoney(Wallet wallet, double amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+	@Override
+	public List<BankAccount> bankAccountByWalletId(Integer walletId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
