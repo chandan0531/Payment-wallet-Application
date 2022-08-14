@@ -10,20 +10,17 @@ import com.masai.exception.InvalidAccountException;
 
 public interface WalletService {
 	
-	public Customer createAccount(Customer customer);
-	
-	//public double showBalance(String mobileno) throws InvalidAccountException;
-	
-	//public Customer fundTransfer(String sourceMobileNo, String targetMobileNo, BigDecimal amount);
-	
-	//public Customer depositAmount(String mobileno, BigDecimal amount);
 	
 	
-	//public Customer updateAccount(Customer customer);
+	public double showBalance(String key) throws InvalidAccountException;
+	
+	public String fundTransfer(String sourceMobileNo, String targetMobileNo, double amount,String key);
+	
+	public String depositAmount(double amount, String key, Integer Accno);
 	
 	public String addMoney(double amount, String key,Integer Accno);
 	
-	public List<BankAccount> bankAccountByWalletId(Integer walletId);
+	public List<BankAccount> bankAccountByWalletId(Integer walletId,String key);
 	
 
 }
