@@ -1,6 +1,6 @@
 package com.masai.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,10 +33,13 @@ public class BillPayment {
 	
 	@CreatedDate
 	@CreationTimestamp
-	private LocalDateTime paymentDate;
+	private LocalDate paymentDate;
 	
 	@ManyToOne
 	@JsonIgnore
 	private Wallet wallet;
+	
+	
+	private Transaction trans;
 
 }
