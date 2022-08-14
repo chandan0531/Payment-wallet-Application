@@ -1,12 +1,12 @@
 package com.masai.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -33,9 +33,9 @@ public class BillPayment {
 	
 	@CreatedDate
 	@CreationTimestamp
-	private LocalDateTime paymentDate;
+	private LocalDate paymentDate;
 	
-	@ManyToOne
+	@OneToOne
 	@JsonIgnore
 	private Wallet wallet;
 
