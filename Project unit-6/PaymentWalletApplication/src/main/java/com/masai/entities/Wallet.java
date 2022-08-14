@@ -43,6 +43,10 @@ public class Wallet {
 	
 	@JsonIgnore
 	@OneToMany
+	private List<BillPayment> billpayment;
+	
+	@JsonIgnore
+	@OneToMany
 	private List<Transaction> transactions;
 	
 }
