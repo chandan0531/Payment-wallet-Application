@@ -11,4 +11,5 @@ import com.masai.entities.Wallet;
 @Repository
 public interface WalletDao extends JpaRepository<Wallet, Integer>{
 
+	public Optional<Wallet> findByWalletId(Integer walletId);
 }
