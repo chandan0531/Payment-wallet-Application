@@ -27,4 +27,8 @@ public class BankAccountController {
 		
 	return new ResponseEntity<String>(bankService.addAccount(bankAccount),HttpStatus.CREATED);
 	}
+	
+	
+	
+	
 }
