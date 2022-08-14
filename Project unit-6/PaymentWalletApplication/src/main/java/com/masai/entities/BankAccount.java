@@ -42,6 +42,6 @@ public class BankAccount {
 	private double balance;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JsonIgnore
+	//@JsonIgnore
 	private Wallet wallet;	
 }
