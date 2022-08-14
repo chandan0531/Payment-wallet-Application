@@ -61,16 +61,18 @@ public class WalletServiceImpl implements WalletService{
 	public String addMoney(double amount, String key,Integer Accno) {
     Wallet wallet = userSessionsImpl.getCustomerWallet(key);
 		
-		List<BankAccount> bankAccountList = wallet.getBankAccount();
+    BankAccount ListofBank =   bankDao.getById(Accno);
+    
+		//List<BankAccount> bankAccountList = wallet.getBankAccount();
 		//System.out.println(bankAccountList);
 		int count = 0;
-		for(BankAccount ListofBank:bankAccountList) {
-			System.out.println(ListofBank);
+		//for(BankAccount ListofBank:bankAccountList) {
+			//System.out.println(ListofBank);
 			if(ListofBank.getAccountNo().equals(Accno)) {
 				if(ListofBank.getBalance()>=amount) {
 					count++;
 					ListofBank.setBalance(ListofBank.getBalance()-amount);
-					wallet.setBalance(ListofBank.getBalance()+amount);
+					wallet.setBalance(wallet.getBalance()+amount);
 					
 					bankDao.save(ListofBank);
 					walletDao.save(wallet);
@@ -79,8 +81,7 @@ public class WalletServiceImpl implements WalletService{
 					throw new InsuficientBalance("Balance is not Sufficient in Bank");
 				}
 			}
-			
-		}
+		
 		if(count==0) {
 			throw new BankAccountNotFound("Account does not exist");
 		}
