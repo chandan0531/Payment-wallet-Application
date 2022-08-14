@@ -2,6 +2,7 @@ package com.masai.service;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.security.auth.login.AccountNotFoundException;
@@ -79,16 +80,8 @@ public class BankAccountServiceImpl implements BankAccountService {
 		  return "Bank Account deleted  Successfully";
 	}
 
-
 	@Override
-	public BankAccount viewAccount(Integer walletId) throws BankAccountNotFound {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-/*
-	@Override
-	public BankAccount viewAccount(Integer walletId) throws BankAccountNotFound {
+	public List<BankAccount> viewAllBankAccountByWalletId(Integer walletId) throws BankAccountNotFound {
 		
 	Optional<Wallet> bankAccount = walletdao.findById(walletId);
 	
@@ -100,15 +93,11 @@ public class BankAccountServiceImpl implements BankAccountService {
 	throw new BankAccountNotFound("bank account not found with this wallet Id");
 	}
 	
-	 bankAccount.get()
+	 return  bankAccount.get().getBankAccount();
 	
 	
 	
-	}
-	*/
-	
-	
-	
+	}	
 	
 	
 }

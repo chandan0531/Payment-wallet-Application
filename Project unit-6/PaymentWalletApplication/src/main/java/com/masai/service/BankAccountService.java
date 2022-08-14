@@ -1,6 +1,8 @@
 package com.masai.service;
 
 
+import java.util.List;
+
 import javax.security.auth.login.AccountNotFoundException;
 
 import com.masai.entities.BankAccount;
@@ -16,10 +18,8 @@ public interface BankAccountService {
 
 	public String removeAccount(Integer accountNumber)throws BankAccountNotFound;
 	
+	public List<BankAccount> viewAllBankAccountByWalletId(Integer walletId) throws BankAccountNotFound;
 	
-	public BankAccount viewAccount(Integer walletId) throws BankAccountNotFound;
-	
-//	public List<BankAccount> viewAllAccount(Wallet wallet) throws BankAccountNotFound;
 	
 	
 	
