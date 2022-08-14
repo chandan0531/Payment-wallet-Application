@@ -26,6 +26,31 @@ public class GlobalExceptionHandler {
 	}
 
 	
+	@ExceptionHandler(InsuficientBalance.class)
+	ResponseEntity<MyErrorDetails> insuficientBalanceFound(InsuficientBalance nfe, WebRequest wr){
+		
+		MyErrorDetails err = new MyErrorDetails();
+		
+		err.setDateTime(LocalDateTime.now());
+		err.setMessage(nfe.getMessage());
+		err.setDetails(wr.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(WalletNotFound.class)
+	ResponseEntity<MyErrorDetails> walletNotFound(WalletNotFound nfe, WebRequest wr){
+		
+		MyErrorDetails err = new MyErrorDetails();
+		
+		err.setDateTime(LocalDateTime.now());
+		err.setMessage(nfe.getMessage());
+		err.setDetails(wr.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+
+	
 	@ExceptionHandler(NoHandlerFoundException.class)
 	ResponseEntity<MyErrorDetails> noHandlerFound(NoHandlerFoundException nfe, WebRequest wr){
 		

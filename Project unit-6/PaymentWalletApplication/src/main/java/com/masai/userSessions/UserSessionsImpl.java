@@ -41,6 +41,26 @@ public class UserSessionsImpl implements UserSessions{
 		
 		
 	}
+
+	@Override
+	public Customer getCustomer(String key) {
+		
+		Optional<UserSession> optionaluserSession = userSessionDao.findByUuid(key);
+		
+		if(!optionaluserSession.isPresent()) {
+			throw new UserNotFoundException("Unauthorized key");
+		}else {
+			
+			Integer customerId= optionaluserSession.get().getCustomerId();
+			
+			Customer customer = customerDao.getById(customerId);
+			
+			
+			return customer;
+		}
+		
+		
+	}
 	
 
 }

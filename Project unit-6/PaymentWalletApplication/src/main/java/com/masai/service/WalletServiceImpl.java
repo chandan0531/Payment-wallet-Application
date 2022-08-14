@@ -41,20 +41,41 @@ public class WalletServiceImpl implements WalletService{
 	@Autowired
 	private UserSessionsImpl userSessionsImpl;
 	
+	@Override
+	public String fundTransfer(String sourceMobileNo, String targetMobileNo, double amount,String key) {
+
+		Wallet sourceWallet = userSessionsImpl.getCustomerWallet(key);
+		Customer sourceCustomer = userSessionsImpl.getCustomer(key);
+		
+		if(sourceWallet.getBalance()<amount) {
+			throw new InsuficientBalance("Balance is not Sufficient in Source Wallet");
+		}
+		
+		Optional<Customer> OptionalTargetCustomer = customerDao.findByMobileNumber(targetMobileNo);
+		
+		if(!OptionalTargetCustomer.isPresent()) {
+			throw new BankAccountNotFound("Account does not exist with this mobile Number");
+		}
+		
+		Customer TargetCustomer = OptionalTargetCustomer.get();
+		Wallet TargetWallet = TargetCustomer.getWallet();
+		sourceWallet.setBalance(sourceWallet.getBalance()-amount);
+		TargetWallet.setBalance(TargetWallet.getBalance()+amount);
+		
+		walletDao.save(sourceWallet);
+		walletDao.save(TargetWallet);
+		return "Fund is Transferred from "+sourceCustomer.getName()+ " To "+ TargetCustomer.getName();
+	}
 	
-//	@Override
-//	public double showBalance(String mobileNumber) {
-//		
-//		Optional<Customer> otp = customerDao.findByMobileNumber(mobileNumber);
-//		
-//		if(otp.isPresent()) {
-//			return otp.get().getWallet().getBalance();
-//		}else {
-//			throw new InvalidAccountException("Invalid Account");
-//		}
-//		
-//		
-//	}
+	@Override
+	public double showBalance(String key) {
+		
+		double balance = userSessionsImpl.getCustomerWallet(key).getBalance();
+		
+		
+			return balance;
+		
+	}
 
 
 	@Override
@@ -63,11 +84,8 @@ public class WalletServiceImpl implements WalletService{
 		
     BankAccount ListofBank =   bankDao.getById(Accno);
     
-		//List<BankAccount> bankAccountList = wallet.getBankAccount();
-		//System.out.println(bankAccountList);
+		
 		int count = 0;
-		//for(BankAccount ListofBank:bankAccountList) {
-			//System.out.println(ListofBank);
 			if(ListofBank.getAccountNo().equals(Accno)) {
 				if(ListofBank.getBalance()>=amount) {
 					count++;
@@ -90,19 +108,10 @@ public class WalletServiceImpl implements WalletService{
 	}
 
 
-	@Override
-	public Customer createAccount(Customer customer) {
-
-		Wallet wallet = customer.getWallet();
-		
-		walletDao.save(wallet);
-		
-		return customerDao.save(customer);
-	}
-
 
 	@Override
-	public List<BankAccount> bankAccountByWalletId(Integer walletId) {
+	public List<BankAccount> bankAccountByWalletId(Integer walletId,String key) {
+		//Wallet wallet = userSessionsImpl.getCustomerWallet(key);
 		
 		Optional<Wallet> opt =  walletDao.findByWalletId(walletId);
 
@@ -119,6 +128,41 @@ public class WalletServiceImpl implements WalletService{
 		return opt.get().getBankAccount();
 		
 	}
+
+
+	@Override
+	public String depositAmount(double amount, String key, Integer Accno) {
+		Wallet wallet = userSessionsImpl.getCustomerWallet(key);
+		
+	    BankAccount ListofBank =   bankDao.getById(Accno);
+
+			int count = 0;
+			
+				if(ListofBank.getAccountNo().equals(Accno)) {
+					if(wallet.getBalance()>=amount) {
+						count++;
+						ListofBank.setBalance(ListofBank.getBalance()+amount);
+						wallet.setBalance(wallet.getBalance()-amount);
+						
+						bankDao.save(ListofBank);
+						walletDao.save(wallet);
+						
+					}else {
+						throw new InsuficientBalance("Balance is not Sufficient in Wallet");
+					}
+				}
+			
+			if(count==0) {
+				throw new BankAccountNotFound("Account does not exist");
+			}
+			
+			
+			return amount+" Rupee is Credited into Bank";
+
+	}
+
+
+	
 
 	
 	
