@@ -1,7 +1,9 @@
 package com.masai.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.masai.entities.Transaction;
 import com.masai.entities.Wallet;
+import com.masai.exception.TransactionNotFoundException;
 import com.masai.repository.TransactionDao;
 import com.masai.repository.WalletDao;
 
@@ -36,9 +39,14 @@ public class TransactionServiceImpl implements TransactionService{
 	@Override
 	public List<Transaction> viewAllTransactions(Wallet wallet) {
 		// TODO Auto-generated method stub
-		Wallet wall=   wDao.findById(wallet.getWalletId()).orElse(null);
+//		Wallet wall=   wDao.findById(wallet.getWalletId());
 		
-		return null;
+//		Optional<Transaction> transations = tDao.findById(wallet.getWalletId());
+		
+		List <Transaction>  transations = wallet.getTransactions();
+		
+		return transations;	
+		
 	}
 
 	@Override
@@ -48,9 +56,18 @@ public class TransactionServiceImpl implements TransactionService{
 	}
 
 	@Override
-	public List<Transaction> viewAllTransactions(String transactionType) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Transaction> viewAllTransactions(String transactionType) throws TransactionNotFoundException{
+		
+		List<Transaction> transactions =  tDao.findByTransactionType(transactionType);
+		
+		if(transactions.size()>0)
+		{
+			return transactions;
+		}
+		else
+		{
+			throw new TransactionNotFoundException("Transaction not found");
+		}
 	}
 	
 }

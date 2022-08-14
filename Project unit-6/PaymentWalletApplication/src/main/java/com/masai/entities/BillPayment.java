@@ -36,7 +36,7 @@ public class BillPayment {
 	private LocalDate paymentDate;
 	
 	@OneToOne
-	@JsonIgnore
+//	@JsonIgnore
 	private Wallet wallet;
 
 }
