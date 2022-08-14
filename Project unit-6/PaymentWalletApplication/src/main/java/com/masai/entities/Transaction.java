@@ -36,6 +36,5 @@ public class Transaction {
 	private String description;
 	
 	@ManyToOne
-	@JsonIgnore
 	private Wallet wallet;
 }
