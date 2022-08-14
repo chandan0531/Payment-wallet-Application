@@ -1,6 +1,10 @@
 package com.masai.entities;
 
+import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
@@ -22,7 +26,7 @@ import lombok.NoArgsConstructor;
 public class BankAccount {
 
 	@Id
-	@Size(min = 1, message = "Bank Account Number must be minimum 1")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer accountNo;
 	
 	@NotNull
@@ -37,6 +41,7 @@ public class BankAccount {
 	@Min(0)
 	private double balance;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Wallet wallet;	
 }
