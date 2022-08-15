@@ -28,17 +28,19 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	
 	@Autowired
 
+	
+
+
 
 	private TransactionServiceImpl trService;
-	
+
 	@Autowired
 	private UserSessionDao sessionDao;
 
 
 	@Override
 	public BillPayment addBillPayment(BillPayment payment, Integer wallId) {
-		Wallet wallet =payment.getWallet();//100
-		
+	
 
 		Transaction tr = new Transaction();
 		
@@ -46,7 +48,6 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 		tr.setDescription(payment.getBillType());
 		tr.setTransactionDate(LocalDate.now());
 
-	
 		Double debitamt = payment.getAmount();
 		Wallet w1;
 		Double bal;
@@ -62,16 +63,20 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 			
 			}
 
+
+
+
 			
 				trService.addTansaction(tr);
-				
-	}else {
+
+	}
+		else {
 			throw new BillPaymentNotFoundException("Insufficient amount ");
 		}
 		
 		 
 		return  billDao.save(payment);
-	}
+}
 
 	@Override
 	public List<BillPayment> viewBillPayment(BillPayment payment, Integer wallId) {
