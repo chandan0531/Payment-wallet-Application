@@ -27,8 +27,21 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	private BillPaymentDao billDao;
 	
 	@Autowired
+<<<<<<< HEAD
 	private TransactionServiceImpl trService;
 	
+=======
+<<<<<<< HEAD
+
+	private TransactionServiceImpl trService;
+
+=======
+<<<<<<< HEAD
+	private TransactionServiceImpl trService;
+=======
+	private WalletDao wDao;
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
+>>>>>>> 8e6bf32a71dcea0ffc67e2c430e55fce8b0dbb84
 	
 	@Autowired
 	private UserSessionDao sessionDao;
@@ -37,11 +50,26 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	public BillPayment addBillPayment(BillPayment payment, Integer wallId) {
 		Wallet wallet =payment.getWallet();//100
 		
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
+>>>>>>> 8e6bf32a71dcea0ffc67e2c430e55fce8b0dbb84
 		Transaction tr = new Transaction();
 		
 		tr.setAmount(payment.getAmount());
 		tr.setDescription(payment.getBillType());
 		tr.setTransactionDate(LocalDate.now());
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+		Integer wallId =2;
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
+>>>>>>> 8e6bf32a71dcea0ffc67e2c430e55fce8b0dbb84
 //		Wallet wallet =payment.getWallet();//100
 //		Double amt = wallet.getBalance();
 		Double debitamt = payment.getAmount();
@@ -58,8 +86,28 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 				trService.addTansaction(tr);
 			}
 			}
+<<<<<<< HEAD
 				
 
+=======
+
+				
+
+=======
+<<<<<<< HEAD
+				trService.addTansaction(tr);
+			}
+			}
+=======
+				
+				
+				
+			}
+			
+		}
+>>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
+>>>>>>> 8e6bf32a71dcea0ffc67e2c430e55fce8b0dbb84
 		else {
 			throw new BillPaymentNotFoundException("Insufficient amount ");
 		}
