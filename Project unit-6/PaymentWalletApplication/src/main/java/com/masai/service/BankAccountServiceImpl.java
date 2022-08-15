@@ -109,7 +109,6 @@ public class BankAccountServiceImpl implements BankAccountService {
 		
 	Optional<Wallet> bankAccount = walletdao.findById(walletId);
 	
-	System.out.println(bankAccount+"cccccccccccc");
 
 	if(!bankAccount.isPresent()) {
 	throw new BankAccountNotFound("bank account not found with this wallet Id");
@@ -118,14 +117,12 @@ public class BankAccountServiceImpl implements BankAccountService {
 	
 	
 	List<BankAccount>  banks =  bankAccount.get().getBankAccount();	
-System.out.println(banks+"bbbbbbbbbb");
 	
    banks.forEach((s->{
 
 	  s.getAccountNo();
 	  s.getBankName();
 	  
-	System.out.println(s.getBankName()+"aaaaaaaaaaaaaaaaaaaaaa");
 	  
 	  allbank.add(s);
   }));
