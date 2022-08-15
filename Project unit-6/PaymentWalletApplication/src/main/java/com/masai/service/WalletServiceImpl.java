@@ -1,5 +1,5 @@
 package com.masai.service;
-
+/*
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -62,14 +62,20 @@ public class WalletServiceImpl implements WalletService{
 		TargetWallet.setBalance(TargetWallet.getBalance()+amount);
 		
 		Transaction sourceTransaction = new Transaction();
+<<<<<<< HEAD
 
+=======
+>>>>>>> a954bd320712d65b51164c80b477eeca64d8f489
 		sourceTransaction.setTransactionType("WALLETTOWALLETFOUNDTRANSFER");
 		sourceTransaction.setTransactionDate(LocalDate.now());
 		sourceTransaction.setAmount(amount);
 		sourceTransaction.setDescription("Fund Transfer from " +sourceMobileNo+ " To "+ targetMobileNo);
 		
 		Transaction targetTransaction = new Transaction();
+<<<<<<< HEAD
 
+=======
+>>>>>>> a954bd320712d65b51164c80b477eeca64d8f489
 		targetTransaction.setTransactionType("WALLETTOWALLETFOUNDTRANSFER");
 		targetTransaction.setTransactionDate(LocalDate.now());
 		targetTransaction.setAmount(amount);
@@ -120,7 +126,10 @@ public class WalletServiceImpl implements WalletService{
 					walletDao.save(wallet);
 					
 					Transaction transaction = new Transaction();
+<<<<<<< HEAD
 					transaction.setTransactionType(key);
+=======
+>>>>>>> a954bd320712d65b51164c80b477eeca64d8f489
 					transaction.setTransactionType("BankToWallet");
 					transaction.setTransactionDate(LocalDate.now());
 					transaction.setAmount(amount);
@@ -183,8 +192,11 @@ public class WalletServiceImpl implements WalletService{
 						walletDao.save(wallet);
 						
 						Transaction transaction = new Transaction();
+<<<<<<< HEAD
 
 						transaction.setTransactionType(key);
+=======
+>>>>>>> a954bd320712d65b51164c80b477eeca64d8f489
 						transaction.setTransactionType("BankToWallet");
 						transaction.setTransactionDate(LocalDate.now());
 						transaction.setAmount(amount);
@@ -214,7 +226,6 @@ public class WalletServiceImpl implements WalletService{
 	
 	
 	
-	
+	}
 
-	
-}
+	*/

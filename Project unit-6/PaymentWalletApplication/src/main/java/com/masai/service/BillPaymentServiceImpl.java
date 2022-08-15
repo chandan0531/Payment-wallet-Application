@@ -28,7 +28,6 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	
 	@Autowired
 
-	
 
 
 
@@ -36,6 +35,7 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 
 	@Autowired
 	private UserSessionDao sessionDao;
+
 
 
 	@Override
@@ -47,6 +47,7 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 		tr.setAmount(payment.getAmount());
 		tr.setDescription(payment.getBillType());
 		tr.setTransactionDate(LocalDate.now());
+
 
 		Double debitamt = payment.getAmount();
 		Wallet w1;
@@ -70,7 +71,8 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 				trService.addTansaction(tr);
 
 	}
-		else {
+			
+		else{
 			throw new BillPaymentNotFoundException("Insufficient amount ");
 		}
 		
