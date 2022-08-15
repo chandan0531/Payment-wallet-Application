@@ -14,5 +14,7 @@ public interface UserSessionDao extends JpaRepository<UserSession,Integer >{
 	
 	public Optional<UserSession> findByUuid(String uuid);
 
+	public void save(String uuid);
+
 	
 }

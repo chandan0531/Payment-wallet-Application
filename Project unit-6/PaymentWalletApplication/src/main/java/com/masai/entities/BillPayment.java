@@ -35,6 +35,7 @@ public class BillPayment {
 	@CreationTimestamp
 	private LocalDate paymentDate;
 	
+	
 	@OneToOne
 //	@JsonIgnore
 	private Wallet wallet;

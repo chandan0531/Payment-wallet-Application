@@ -110,8 +110,7 @@ public class WalletServiceImpl implements WalletService{
 
 
 	@Override
-	public List<BankAccount> bankAccountByWalletId(Integer walletId,String key) {
-		//Wallet wallet = userSessionsImpl.getCustomerWallet(key);
+	public List<BankAccount> bankAccountByWalletId(Integer walletId) {
 		
 		Optional<Wallet> opt =  walletDao.findByWalletId(walletId);
 
