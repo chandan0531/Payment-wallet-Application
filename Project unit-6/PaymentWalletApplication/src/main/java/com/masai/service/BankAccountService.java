@@ -12,7 +12,7 @@ import com.masai.exception.BankAccountNotFound;
 public interface BankAccountService {
 
 	
-	public String addAccount(BankAccount bankAccount,String key);
+	public String addAccount(BankAccount bankAccount,Integer walletId,String key);
 	
 	public BankAccount getAccountByAccountNumber(Integer accountNumber) throws AccountNotFoundException;
 

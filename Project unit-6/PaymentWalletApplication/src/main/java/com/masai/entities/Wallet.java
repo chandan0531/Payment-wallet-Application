@@ -35,10 +35,12 @@ public class Wallet {
 	@NotNull
 	private double balance;
 	
-	@OneToMany
-	private List<BankAccount> bankAccount = new ArrayList<>();
+	@OneToMany(mappedBy = "wallet")
+	@JsonIgnore
+	private List<BankAccount> bankAccount;
 	
 	@OneToOne
+	@JsonIgnore
 	private Customer customer;
 	
 	@JsonIgnore
