@@ -30,12 +30,6 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 
 
 	private TransactionServiceImpl trService;
-
-
-	private TransactionServiceImpl trService;
-
-	private WalletDao wDao;
-
 	
 	@Autowired
 	private UserSessionDao sessionDao;
@@ -65,21 +59,13 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 				w1.setBalance(bal-debitamt);
 				wDao.save(w1);
 				trService.addTansaction(tr);
-			}
+			
 			}
 
 			
 				trService.addTansaction(tr);
-			}
-			}
 				
-				
-				
-			}
-			
-		}
-
-		else {
+	}else {
 			throw new BillPaymentNotFoundException("Insufficient amount ");
 		}
 		

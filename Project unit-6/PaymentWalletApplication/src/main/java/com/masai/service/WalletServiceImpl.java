@@ -1,11 +1,8 @@
 package com.masai.service;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-
-import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +14,6 @@ import com.masai.entities.TransactionType;
 import com.masai.entities.Wallet;
 import com.masai.exception.BankAccountNotFound;
 import com.masai.exception.InsuficientBalance;
-import com.masai.exception.InvalidAccountException;
 import com.masai.exception.WalletNotFound;
 import com.masai.repository.BankAccountDao;
 import com.masai.repository.CustomerDao;
@@ -66,13 +62,11 @@ public class WalletServiceImpl implements WalletService{
 		TargetWallet.setBalance(TargetWallet.getBalance()+amount);
 		
 		Transaction sourceTransaction = new Transaction();
-		sourceTransaction.setTransactionType(TransactionType.WALLETTOWALLETFOUNDTRANSFER);
 		sourceTransaction.setTransactionDate(LocalDate.now());
 		sourceTransaction.setAmount(amount);
 		sourceTransaction.setDescription("Fund Transfer from " +sourceMobileNo+ " To "+ targetMobileNo);
 		
 		Transaction targetTransaction = new Transaction();
-		targetTransaction.setTransactionType(TransactionType.WALLETTOWALLETFOUNDTRANSFER);
 		targetTransaction.setTransactionDate(LocalDate.now());
 		targetTransaction.setAmount(amount);
 		targetTransaction.setDescription("Fund Transfer from " +sourceMobileNo+ " To "+ targetMobileNo);
@@ -122,7 +116,7 @@ public class WalletServiceImpl implements WalletService{
 					walletDao.save(wallet);
 					
 					Transaction transaction = new Transaction();
-					transaction.setTransactionType(TransactionType.WALLETBALANCEUPDATED);
+					transaction.setTransactionType(key);
 					transaction.setTransactionDate(LocalDate.now());
 					transaction.setAmount(amount);
 					transaction.setDescription("Fund Transfer from Bank to Wallet" );
@@ -182,7 +176,7 @@ public class WalletServiceImpl implements WalletService{
 						walletDao.save(wallet);
 						
 						Transaction transaction = new Transaction();
-						transaction.setTransactionType(TransactionType.BANKBALANCEUPDATED);
+						transaction.setTransactionType(key);
 						transaction.setTransactionDate(LocalDate.now());
 						transaction.setAmount(amount);
 						transaction.setDescription("Fund Transfer from Wallet to Bank");
