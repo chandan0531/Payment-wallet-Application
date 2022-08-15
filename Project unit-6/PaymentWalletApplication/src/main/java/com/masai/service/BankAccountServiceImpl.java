@@ -2,6 +2,8 @@ package com.masai.service;
 
 
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,24 +97,41 @@ public class BankAccountServiceImpl implements BankAccountService {
 	
 	return "wrong key";	 
 	}
+	
+	
+	
 
+	
 	@Override
-	public List<BankAccount> viewAllBankAccountByWalletId(Integer walletId) throws BankAccountNotFound {
+	public   List<BankAccount>  viewAllBankAccountByWalletId(Integer walletId) throws BankAccountNotFound {
+		
+		List<BankAccount> allbank = new ArrayList<>();
 		
 	Optional<Wallet> bankAccount = walletdao.findById(walletId);
 	
-	if(bankAccount == null) {
-		throw new WalletNotFound("wallet not found with this wallet Id");
-	}
-	
+	System.out.println(bankAccount+"cccccccccccc");
+
 	if(!bankAccount.isPresent()) {
 	throw new BankAccountNotFound("bank account not found with this wallet Id");
 	}
 	
-	 return  bankAccount.get().getBankAccount();
 	
 	
+	List<BankAccount>  banks =  bankAccount.get().getBankAccount();	
+System.out.println(banks+"bbbbbbbbbb");
 	
+   banks.forEach((s->{
+
+	  s.getAccountNo();
+	  s.getBankName();
+	  
+	System.out.println(s.getBankName()+"aaaaaaaaaaaaaaaaaaaaaa");
+	  
+	  allbank.add(s);
+  }));
+  
+   
+   return allbank;
 	}	
 	
 	

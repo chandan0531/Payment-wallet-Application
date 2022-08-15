@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import com.masai.entities.BillPayment;
 import com.masai.entities.Wallet;
 import com.masai.repository.BillPaymentDao;
+import com.masai.repository.UserSessionDao;
 import com.masai.repository.WalletDao;
+
+import net.bytebuddy.utility.RandomString;
 
 @Service
 public class BillPaymentServiceImpl implements BillPaymentService {
@@ -18,16 +21,20 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	
 	@Autowired
 	private WalletDao wDao;
+	
+	@Autowired
+	private UserSessionDao sessionDao;
 
 	@Override
 	public BillPayment addBillPayment(BillPayment payment) {
 		
-		Integer wallId =10;
+		Integer wallId =2;
 //		Wallet wallet =payment.getWallet();//100
 //		Double amt = wallet.getBalance();
 		Double debitamt = payment.getAmount();
 		Wallet w1;
 		Double bal;
+		
 		Optional<Wallet> opt = wDao.findById(wallId);
 		if(opt.isPresent()) {
 			 w1 =opt.get();
@@ -35,7 +42,11 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 			if(bal>=debitamt) {
 				w1.setBalance(bal-debitamt);
 				wDao.save(w1);
+				
+				
+				
 			}
+			
 		}
 		else {
 			System.out.println("insuff");
@@ -56,5 +67,6 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

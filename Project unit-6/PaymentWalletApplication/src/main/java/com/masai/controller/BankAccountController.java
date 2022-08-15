@@ -65,7 +65,8 @@ public class BankAccountController {
 	ResponseEntity<List<BankAccount>> BankByWalletId(@PathVariable Integer walletId){
 		
 	List<BankAccount> bankaccount =	walletService.bankAccountByWalletId(walletId);
-		
+	
+   // List<BankAccount> bankaccount =  bankService.viewAllBankAccountByWalletId(walletId);		
 	return new ResponseEntity<List<BankAccount>>(bankaccount,HttpStatus.OK);
 	}
 	

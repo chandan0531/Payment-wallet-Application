@@ -20,7 +20,7 @@ public interface WalletService {
 	
 	public String addMoney(double amount, String key,Integer Accno);
 	
-	public List<BankAccount> bankAccountByWalletId(Integer walletId,String key);
+	public List<BankAccount> bankAccountByWalletId(Integer walletId);
 	
 
 }
