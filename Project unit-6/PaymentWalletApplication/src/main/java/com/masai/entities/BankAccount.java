@@ -11,13 +11,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -40,6 +44,6 @@ public class BankAccount {
 	private double balance;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	//@JsonIgnore
+	@JsonIgnore
 	private Wallet wallet;	
 }
