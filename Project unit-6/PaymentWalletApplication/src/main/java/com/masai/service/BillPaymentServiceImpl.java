@@ -12,7 +12,10 @@ import com.masai.entities.Transaction;
 import com.masai.entities.Wallet;
 import com.masai.exception.BillPaymentNotFoundException;
 import com.masai.repository.BillPaymentDao;
+import com.masai.repository.UserSessionDao;
 import com.masai.repository.WalletDao;
+
+import net.bytebuddy.utility.RandomString;
 
 @Service
 public class BillPaymentServiceImpl implements BillPaymentService {
@@ -24,21 +27,34 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	private BillPaymentDao billDao;
 	
 	@Autowired
+<<<<<<< HEAD
 	private TransactionServiceImpl trService;
+=======
+	private WalletDao wDao;
+	
+	@Autowired
+	private UserSessionDao sessionDao;
+>>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
 
 	@Override
 	public BillPayment addBillPayment(BillPayment payment, Integer wallId) {
 		Wallet wallet =payment.getWallet();//100
 		
+<<<<<<< HEAD
 		Transaction tr = new Transaction();
 		
 		tr.setAmount(payment.getAmount());
 		tr.setDescription(payment.getBillType());
 		tr.setTransactionDate(LocalDate.now());
+=======
+		Integer wallId =2;
+//		Wallet wallet =payment.getWallet();//100
+>>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
 //		Double amt = wallet.getBalance();
 		Double debitamt = payment.getAmount();
 		Wallet w1;
 		Double bal;
+		
 		Optional<Wallet> opt = wDao.findById(wallId);
 		if(opt.isPresent()) {
 			 w1 =opt.get();
@@ -46,9 +62,18 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 			if(bal>=debitamt) {
 				w1.setBalance(bal-debitamt);
 				wDao.save(w1);
+<<<<<<< HEAD
 				trService.addTansaction(tr);
 			}
 			}
+=======
+				
+				
+				
+			}
+			
+		}
+>>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
 		else {
 			throw new BillPaymentNotFoundException("Insufficient amount ");
 		}
@@ -70,5 +95,6 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 		
 		return billList;
 	}
+
 
 }
