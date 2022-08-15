@@ -27,71 +27,26 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	private BillPaymentDao billDao;
 	
 	@Autowired
-<<<<<<< HEAD
-<<<<<<< HEAD
 	private TransactionServiceImpl trService;
-	
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 34c3d0c112805e08a376d5ab8ece08a8d696e2eb
-
-	private TransactionServiceImpl trService;
-
-
-	private TransactionServiceImpl trService;
-
-	private WalletDao wDao;
-<<<<<<< HEAD
->>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
->>>>>>> 8e6bf32a71dcea0ffc67e2c430e55fce8b0dbb84
-	
-	@Autowired
-	private UserSessionDao sessionDao;
-=======
-
 	
 	@Autowired
 	private UserSessionDao sessionDao;
 
->>>>>>> 34c3d0c112805e08a376d5ab8ece08a8d696e2eb
+
 
 	@Override
 	public BillPayment addBillPayment(BillPayment payment, Integer wallId) {
 		Wallet wallet =payment.getWallet();//100
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
->>>>>>> 8e6bf32a71dcea0ffc67e2c430e55fce8b0dbb84
-=======
 
->>>>>>> 34c3d0c112805e08a376d5ab8ece08a8d696e2eb
 		Transaction tr = new Transaction();
 		
 		tr.setAmount(payment.getAmount());
 		tr.setDescription(payment.getBillType());
 		tr.setTransactionDate(LocalDate.now());
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
-		Integer wallId =2;
->>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
->>>>>>> 8e6bf32a71dcea0ffc67e2c430e55fce8b0dbb84
-//		Wallet wallet =payment.getWallet();//100
-//		Double amt = wallet.getBalance();
-=======
 
-	
->>>>>>> 34c3d0c112805e08a376d5ab8ece08a8d696e2eb
+		//Integer wallId =2;
+
 		Double debitamt = payment.getAmount();
 		Wallet w1;
 		Double bal;
@@ -106,29 +61,8 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 				trService.addTansaction(tr);
 			}
 			}
-<<<<<<< HEAD
-				
-
-=======
-
 			
-				trService.addTansaction(tr);
-			}
-			}
-				
-				
-				
-			}
-			
-		}
-<<<<<<< HEAD
->>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
->>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
->>>>>>> 8e6bf32a71dcea0ffc67e2c430e55fce8b0dbb84
-=======
-
->>>>>>> 34c3d0c112805e08a376d5ab8ece08a8d696e2eb
-		else {
+		else{
 			throw new BillPaymentNotFoundException("Insufficient amount ");
 		}
 		
