@@ -1,15 +1,13 @@
 package com.masai.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import com.masai.entities.Transaction;
+import com.masai.entities.TransactionType;
 import com.masai.entities.Wallet;
 import com.masai.exception.TransactionNotFoundException;
 import com.masai.repository.TransactionDao;
@@ -56,11 +54,11 @@ public class TransactionServiceImpl implements TransactionService{
 	}
 
 	@Override
-	public List<Transaction> viewAllTransactions(String transactionType) throws TransactionNotFoundException{
+	public List<Transaction> viewAllTransactions() throws TransactionNotFoundException{
 		
-		List<Transaction> transactions =  tDao.findByTransactionType(transactionType);
-		
-		if(transactions.size()>0)
+	
+		List<Transaction> transactions =  tDao.findAll();
+		if(transactions.size() >0)
 		{
 			return transactions;
 		}
@@ -68,6 +66,6 @@ public class TransactionServiceImpl implements TransactionService{
 		{
 			throw new TransactionNotFoundException("Transaction not found");
 		}
-	}
 	
+	}
 }
