@@ -66,13 +66,13 @@ public class WalletServiceImpl implements WalletService{
 		TargetWallet.setBalance(TargetWallet.getBalance()+amount);
 		
 		Transaction sourceTransaction = new Transaction();
-		sourceTransaction.setTransactionType(TransactionType.WALLETTOWALLETFOUNDTRANSFER);
+		sourceTransaction.setTransactionType("WALLETTOWALLETFOUNDTRANSFER");
 		sourceTransaction.setTransactionDate(LocalDate.now());
 		sourceTransaction.setAmount(amount);
 		sourceTransaction.setDescription("Fund Transfer from " +sourceMobileNo+ " To "+ targetMobileNo);
 		
 		Transaction targetTransaction = new Transaction();
-		targetTransaction.setTransactionType(TransactionType.WALLETTOWALLETFOUNDTRANSFER);
+		targetTransaction.setTransactionType("WALLETTOWALLETFOUNDTRANSFER");
 		targetTransaction.setTransactionDate(LocalDate.now());
 		targetTransaction.setAmount(amount);
 		targetTransaction.setDescription("Fund Transfer from " +sourceMobileNo+ " To "+ targetMobileNo);
@@ -122,7 +122,7 @@ public class WalletServiceImpl implements WalletService{
 					walletDao.save(wallet);
 					
 					Transaction transaction = new Transaction();
-					transaction.setTransactionType(TransactionType.WALLETBALANCEUPDATED);
+					transaction.setTransactionType("BankToWallet");
 					transaction.setTransactionDate(LocalDate.now());
 					transaction.setAmount(amount);
 					transaction.setDescription("Fund Transfer from Bank to Wallet" );
@@ -130,6 +130,7 @@ public class WalletServiceImpl implements WalletService{
 					wallet.getTransactions().add(transaction);
 					
 					transactionDao.save(transaction);
+					
 				}else {
 					throw new InsuficientBalance("Balance is not Sufficient in Bank");
 				}
@@ -146,6 +147,7 @@ public class WalletServiceImpl implements WalletService{
 
 	@Override
 	public List<BankAccount> bankAccountByWalletId(Integer walletId) {
+		//Wallet wallet = userSessionsImpl.getCustomerWallet(key);
 		
 		Optional<Wallet> opt =  walletDao.findByWalletId(walletId);
 
@@ -182,7 +184,7 @@ public class WalletServiceImpl implements WalletService{
 						walletDao.save(wallet);
 						
 						Transaction transaction = new Transaction();
-						transaction.setTransactionType(TransactionType.BANKBALANCEUPDATED);
+						transaction.setTransactionType("BankToWallet");
 						transaction.setTransactionDate(LocalDate.now());
 						transaction.setAmount(amount);
 						transaction.setDescription("Fund Transfer from Wallet to Bank");
