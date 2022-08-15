@@ -27,7 +27,7 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer transactionId;
-	private TransactionType transactionType;
+	private String transactionType;
 	
 	@CreatedDate
 	@CreationTimestamp

@@ -33,11 +33,11 @@ public class BankAccountController {
 	WalletService walletService;
 
 	
-	@PostMapping("/banks")
-	ResponseEntity<String> addAccount(@Valid @RequestBody BankAccount bankAccount, @RequestParam String key){
+	@PostMapping("/banks/{walletId}")
+	ResponseEntity<String> addAccount(@Valid @RequestBody BankAccount bankAccount,@PathVariable Integer walletId, @RequestParam String key){
 		
 		
-	return new ResponseEntity<String>(bankService.addAccount(bankAccount,key),HttpStatus.CREATED);
+	return new ResponseEntity<String>(bankService.addAccount(bankAccount,walletId,key),HttpStatus.CREATED);
 	}
 	
 	
@@ -62,11 +62,14 @@ public class BankAccountController {
 	
 	
 	@GetMapping("/wallet/{walletId}")
-	ResponseEntity<List<BankAccount>> BankByWalletId(@PathVariable Integer walletId,@RequestParam String key){
+	ResponseEntity<List<BankAccount>> BankByWalletId(@PathVariable Integer walletId){
 		
-	List<BankAccount> bankaccount =	walletService.bankAccountByWalletId(walletId,key);
-		
-	return new ResponseEntity<List<BankAccount>>(bankaccount,HttpStatus.OK);
-	}
+//	List<BankAccount> bankaccount =	walletService.bankAccountByWalletId(walletId);
 	
+   List<BankAccount> bankaccount =  bankService.viewAllBankAccountByWalletId(walletId);		
+	return new ResponseEntity<List<BankAccount>>(bankaccount,HttpStatus.OK);
+	
+	}
 }
+	
+

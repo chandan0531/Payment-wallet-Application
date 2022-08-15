@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer customerId;
 	
 	
