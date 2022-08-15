@@ -28,9 +28,15 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	
 	@Autowired
 <<<<<<< HEAD
+
+	private TransactionServiceImpl trService;
+
+=======
+<<<<<<< HEAD
 	private TransactionServiceImpl trService;
 =======
 	private WalletDao wDao;
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
 	
 	@Autowired
 	private UserSessionDao sessionDao;
@@ -41,13 +47,19 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 		Wallet wallet =payment.getWallet();//100
 		
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
 		Transaction tr = new Transaction();
 		
 		tr.setAmount(payment.getAmount());
 		tr.setDescription(payment.getBillType());
 		tr.setTransactionDate(LocalDate.now());
+<<<<<<< HEAD
+=======
 =======
 		Integer wallId =2;
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
 //		Wallet wallet =payment.getWallet();//100
 >>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
 //		Double amt = wallet.getBalance();
@@ -66,6 +78,14 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 				trService.addTansaction(tr);
 			}
 			}
+
+				
+
+=======
+<<<<<<< HEAD
+				trService.addTansaction(tr);
+			}
+			}
 =======
 				
 				
@@ -74,6 +94,7 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 			
 		}
 >>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
 		else {
 			throw new BillPaymentNotFoundException("Insufficient amount ");
 		}
