@@ -27,9 +27,9 @@ public class TransactionController {
 	}
 	
 	
-	@GetMapping("/transaction/{transactionType}")
-	public List<Transaction> viewAllTransactionsHandler(@PathVariable("transactionType") String transactionType){
+	@GetMapping("/transactions")
+	public List<Transaction> viewAllTransactionsHandler(){
 		
-		return transService.viewAllTransactions(transactionType);
+		return transService.viewAllTransactions();
 	}
 }
