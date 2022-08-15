@@ -1,6 +1,7 @@
 package com.masai.service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.masai.entities.BankAccount;
 import com.masai.entities.Customer;
+import com.masai.entities.Transaction;
+import com.masai.entities.TransactionType;
 import com.masai.entities.Wallet;
 import com.masai.exception.BankAccountNotFound;
 import com.masai.exception.InsuficientBalance;
@@ -62,8 +65,30 @@ public class WalletServiceImpl implements WalletService{
 		sourceWallet.setBalance(sourceWallet.getBalance()-amount);
 		TargetWallet.setBalance(TargetWallet.getBalance()+amount);
 		
+		Transaction sourceTransaction = new Transaction();
+		sourceTransaction.setTransactionType(TransactionType.WALLETTOWALLETFOUNDTRANSFER);
+		sourceTransaction.setTransactionDate(LocalDate.now());
+		sourceTransaction.setAmount(amount);
+		sourceTransaction.setDescription("Fund Transfer from " +sourceMobileNo+ " To "+ targetMobileNo);
+		
+		Transaction targetTransaction = new Transaction();
+		targetTransaction.setTransactionType(TransactionType.WALLETTOWALLETFOUNDTRANSFER);
+		targetTransaction.setTransactionDate(LocalDate.now());
+		targetTransaction.setAmount(amount);
+		targetTransaction.setDescription("Fund Transfer from " +sourceMobileNo+ " To "+ targetMobileNo);
+		
+		sourceWallet.getTransactions().add(sourceTransaction);
+		TargetWallet.getTransactions().add(targetTransaction);
+		
+		transactionDao.save(sourceTransaction);
+		transactionDao.save(targetTransaction);
+		
+		
 		walletDao.save(sourceWallet);
 		walletDao.save(TargetWallet);
+		
+		
+		
 		return "Fund is Transferred from "+sourceCustomer.getName()+ " To "+ TargetCustomer.getName();
 	}
 	
@@ -92,9 +117,19 @@ public class WalletServiceImpl implements WalletService{
 					ListofBank.setBalance(ListofBank.getBalance()-amount);
 					wallet.setBalance(wallet.getBalance()+amount);
 					
+					
 					bankDao.save(ListofBank);
 					walletDao.save(wallet);
 					
+					Transaction transaction = new Transaction();
+					transaction.setTransactionType(TransactionType.WALLETBALANCEUPDATED);
+					transaction.setTransactionDate(LocalDate.now());
+					transaction.setAmount(amount);
+					transaction.setDescription("Fund Transfer from Bank to Wallet" );
+					
+					wallet.getTransactions().add(transaction);
+					
+					transactionDao.save(transaction);
 				}else {
 					throw new InsuficientBalance("Balance is not Sufficient in Bank");
 				}
@@ -145,6 +180,16 @@ public class WalletServiceImpl implements WalletService{
 						
 						bankDao.save(ListofBank);
 						walletDao.save(wallet);
+						
+						Transaction transaction = new Transaction();
+						transaction.setTransactionType(TransactionType.BANKBALANCEUPDATED);
+						transaction.setTransactionDate(LocalDate.now());
+						transaction.setAmount(amount);
+						transaction.setDescription("Fund Transfer from Wallet to Bank");
+						
+						wallet.getTransactions().add(transaction);
+						
+						transactionDao.save(transaction);
 						
 					}else {
 						throw new InsuficientBalance("Balance is not Sufficient in Wallet");
