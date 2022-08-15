@@ -27,23 +27,41 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	private BillPaymentDao billDao;
 	
 	@Autowired
+<<<<<<< HEAD
 
 	private TransactionServiceImpl trService;
 
+=======
+<<<<<<< HEAD
+	private TransactionServiceImpl trService;
+=======
+	private WalletDao wDao;
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
 	
 	@Autowired
 	private UserSessionDao sessionDao;
+>>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
 
 	@Override
 	public BillPayment addBillPayment(BillPayment payment, Integer wallId) {
 		Wallet wallet =payment.getWallet();//100
 		
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
 		Transaction tr = new Transaction();
 		
 		tr.setAmount(payment.getAmount());
 		tr.setDescription(payment.getBillType());
 		tr.setTransactionDate(LocalDate.now());
+<<<<<<< HEAD
+=======
+=======
+		Integer wallId =2;
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
 //		Wallet wallet =payment.getWallet();//100
+>>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
 //		Double amt = wallet.getBalance();
 		Double debitamt = payment.getAmount();
 		Wallet w1;
@@ -56,12 +74,27 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 			if(bal>=debitamt) {
 				w1.setBalance(bal-debitamt);
 				wDao.save(w1);
+<<<<<<< HEAD
 				trService.addTansaction(tr);
 			}
 			}
 
 				
 
+=======
+<<<<<<< HEAD
+				trService.addTansaction(tr);
+			}
+			}
+=======
+				
+				
+				
+			}
+			
+		}
+>>>>>>> f0bddef76e01b1dcd13b1714c8c3452ebc9d715a
+>>>>>>> a79315d1c20025b14b6cbf462b02d566befcde87
 		else {
 			throw new BillPaymentNotFoundException("Insufficient amount ");
 		}
