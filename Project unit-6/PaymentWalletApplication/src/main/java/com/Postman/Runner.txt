@@ -1,0 +1,77 @@
+/*
+Name : Gaurav Jaiswal
+Github: https://github.com/Aryan-2-2
+
+*/
+
+  
+
+
+1>To Register the customer
+
+
+
+/*
+http://localhost:8080/customer
+
+{
+"customerId": 1,
+"mobileNumber":"8877473989",
+"name" : "Gaurav Jaiswal",
+"password": "Vv@123456789",
+"email" : "aryanjaiswal@gmail.com",
+"wallet":{
+        "walletId": 5,
+        "balance":500 
+    }
+
+
+}
+
+
+2> To Login the customer
+
+http://localhost:8080/login
+
+{
+
+"mobileNumber":"8877473989",
+"password": "Vv@123456789"
+}
+
+
+
+3> To Logout
+
+
+http://localhost:8080/logout?key=(your uuid(key))
+
+
+4> To Add Bank Account
+
+http://localhost:8080/banks/1?key=(your uuid(key))
+
+
+5> To delete the bank account by account no
+
+http://localhost:8080/bank/(accountNumber)?key=(your uuid(key))
+
+6> To Add Money in your wallet through bank accountNumber
+
+http://localhost:8080/addmoney/400/(accountNumber)?key=(your uuid(key))
+
+7>Get Bank Details by wallet id
+
+http://localhost:8080/wallet/(walletId)
+
+8> bill payment by giving wallet id
+
+http://localhost:8080/bills/(walletId)
+
+
+
+
+
+
+
+*/

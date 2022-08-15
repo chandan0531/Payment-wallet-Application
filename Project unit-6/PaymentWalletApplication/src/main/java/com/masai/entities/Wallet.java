@@ -1,7 +1,5 @@
 package com.masai.entities;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
@@ -35,11 +32,11 @@ public class Wallet {
 	@NotNull
 	private double balance;
 	
-	@OneToMany(mappedBy = "wallet")
+	@OneToMany(mappedBy = "wallet",cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<BankAccount> bankAccount;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "wallet")
 	@JsonIgnore
 	private Customer customer;
 	
