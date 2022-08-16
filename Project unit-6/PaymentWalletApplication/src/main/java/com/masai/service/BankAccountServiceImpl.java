@@ -53,10 +53,10 @@ public class BankAccountServiceImpl implements BankAccountService {
 				  walletdao.save(wallet.get());
 				  
 				  
-				return " is successfully added..";
+				return bankAccount.getBankName()+" is successfully added..";
 		   }
 		   
-			return "not found";
+			return "wallet id not found "+walletId;
 }
 
 

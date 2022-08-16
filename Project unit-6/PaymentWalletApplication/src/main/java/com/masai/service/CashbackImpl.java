@@ -38,7 +38,7 @@ public class CashbackImpl implements Cashback{
 		 int cashbankPercentage = 0;
 		 double prevBal = 0;
 		 double currentBal = 0;
-		 Integer amount;
+		 double amount;
 		 
 		 if(cash!=null) {
 			
@@ -53,9 +53,11 @@ public class CashbackImpl implements Cashback{
 			 
 		      BillPayment bill =	  billPaymentDao.getById(billId);
 			 
-		      amount =   bill.getBillId();
+		      amount =   bill.getAmount();
 		
-			 cashbankPercentage = (amount*val)/100;
+			 cashbankPercentage = (int) ((amount*val)/100);
+			 
+			 System.out.println(amount+"aaaaaaaaaaaaaa");
 			 
 			 System.out.println(val);
 			 //System.out.println(cashbankPercentage+"sssssss");

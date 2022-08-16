@@ -97,7 +97,8 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 		 
 		billDao.save(payment);
 		
-		return "Payment Done Successfully_|_Use this Promocode To get CashBack : "+promo ;
+		return "Payment Done Successfully..."+"\n"+
+		"Use this Promocode To get a CashBack from 5% to 25% : "+promo ;
 	}
 
 	@Override
