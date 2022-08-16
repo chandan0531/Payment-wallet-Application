@@ -42,8 +42,8 @@ public class BeneficiaryController {
 
 	}
 	
-	@GetMapping("/viewbeneficiary/{mobNo}")
-	public ResponseEntity<BeneficiaryDetails> bdgetbyId(@Valid @PathVariable("mobNo") String num){
+	@GetMapping("/viewbeneficiary/{mobileNumber}")
+	public ResponseEntity<BeneficiaryDetails> bdgetbyId(@Valid @PathVariable("mobileNumber") String num){
 		
 		BeneficiaryDetails b = bs.viewBeneficiary(num);
 		
