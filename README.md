@@ -50,6 +50,6 @@ Install and connect with database
 spring.datasource.url=jdbc:mysql://localhost:3306/walletdb
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.username=root
-spring.datasource.password=Chandan@0889
+spring.datasource.password=12345
 ```
     
