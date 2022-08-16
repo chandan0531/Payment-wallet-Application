@@ -49,6 +49,18 @@ public class GlobalExceptionHandler {
 		
 		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(BeneficiaryException.class)
+	public ResponseEntity<MyErrorDetails> myExpHandler(BeneficiaryException ie, WebRequest wr)  {
+		System.out.println("inside myHandler method...");
+		
+		MyErrorDetails err= new MyErrorDetails();
+		err.setDateTime(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(wr.getDescription(false));
+
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST );
+	}
 
 	
 	@ExceptionHandler(NoHandlerFoundException.class)
