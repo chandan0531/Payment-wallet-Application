@@ -1,6 +1,8 @@
 package com.masai.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,13 +19,17 @@ public class AuthenticationController {
 	CustomerAuthenticationImpl customerLogin;
 	
 	@PostMapping("/login")
-	public String customerLogin(@RequestBody CustomerDTO customerDTO) {
+	public ResponseEntity<String> customerLogin(@RequestBody CustomerDTO customerDTO) {
 		
-		return customerLogin.login(customerDTO);
+		  String customer =  customerLogin.login(customerDTO);
+		  
+		  return new ResponseEntity<String>(customer,HttpStatus.ACCEPTED);
 	}
 	
 	@PatchMapping("/logout")
-	public String customerLogout(@RequestParam(required = false) String key) {
-		return customerLogin.logOut(key);
-	}
+	public ResponseEntity<String> customerLogout(@RequestParam(required = false) String key) {
+	   String customer	=  customerLogin.logOut(key);
+	   
+	   return new ResponseEntity<String>(customer,HttpStatus.ACCEPTED);
+	} 
 }

@@ -110,6 +110,7 @@ public class WalletServiceImpl implements WalletService{
     BankAccount ListofBank =   bankDao.getById(Accno);
     
 		
+    
 		int count = 0;
 			if(ListofBank.getAccountNo().equals(Accno)) {
 				if(ListofBank.getBalance()>=amount) {
@@ -205,6 +206,16 @@ public class WalletServiceImpl implements WalletService{
 			
 			return amount+" Rupee is Credited into Bank";
 
+	}
+
+	@Override
+	public Customer getCustomerbyWalletId(Integer wlletId) {
+		
+		Wallet wallet = walletDao.getById(wlletId);
+
+		Customer customer = wallet.getCustomer();
+		
+		return customer;
 	}
 
 

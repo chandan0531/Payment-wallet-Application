@@ -14,9 +14,9 @@ public interface TransactionService {
 	
 	public Transaction addTansaction(Transaction trans);
 	
-	public List<Transaction> viewAllTransactions(Wallet wallet) throws TransactionNotFoundException;
+	public List<Transaction> viewAllTransactions(String key,Integer walletId) throws TransactionNotFoundException;
 	
-	public List<Transaction> viewTransactionByDate(LocalDate from , LocalDate to);
+	public List<Transaction> viewTransactionByDate(Integer walletId, String date)throws TransactionNotFoundException;
 	
 	public List<Transaction> viewAllTransactions()throws TransactionNotFoundException;
 }

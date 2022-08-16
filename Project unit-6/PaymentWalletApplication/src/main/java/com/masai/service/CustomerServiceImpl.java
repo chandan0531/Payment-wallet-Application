@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.masai.entities.Customer;
 import com.masai.entities.UserSession;
+import com.masai.entities.Wallet;
 import com.masai.repository.CustomerDao;
 
 @Service
@@ -27,6 +28,8 @@ public class CustomerServiceImpl implements CustomerService{
 		  System.out.println("User Already Exist"); 
 	   }
 	   
+	   
+	   
 	   return customerDao.save(customer);
 	}
 
@@ -39,6 +42,8 @@ public class CustomerServiceImpl implements CustomerService{
 	  System.out.println("no user found");
   }
 
+ 
+  
   return customerDao.save(customer);
  
 

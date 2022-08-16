@@ -1,6 +1,4 @@
 /*
-Name : Gaurav Jaiswal
-Github: https://github.com/Aryan-2-2
 
 */
 
@@ -49,6 +47,18 @@ http://localhost:8080/logout?key=(your uuid(key))
 
 4> To Add Bank Account
 
+{
+
+
+    "ifscCode":"SBIN0123447",
+    "bankName" :"BOB Bank",
+    "balance":1500
+ 
+
+
+
+}
+
 http://localhost:8080/banks/1?key=(your uuid(key))
 
 
@@ -60,11 +70,24 @@ http://localhost:8080/bank/(accountNumber)?key=(your uuid(key))
 
 http://localhost:8080/addmoney/400/(accountNumber)?key=(your uuid(key))
 
-7>Get Bank Details by wallet id
+7> To Add Money in your Bank through bank accountNumber
+
+http://localhost:8080/depositmoney/400/(accountNumber)?key=(your uuid(key))
+
+8> Transfer Money from your wallet  to another wallet through both mobilenumbers
+
+http://localhost:8080/fundtransfer/400/sourceno/targetno?key=(your uuid(key))
+
+9>Get Bank Details by wallet id
 
 http://localhost:8080/wallet/(walletId)
 
-8> bill payment by giving wallet id
+10> bill payment by giving wallet id
+
+{
+"amount":100,
+"billType":"swiggy"
+}
 
 http://localhost:8080/bills/(walletId)
 

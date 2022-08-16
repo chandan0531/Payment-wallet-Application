@@ -3,6 +3,8 @@ package com.masai.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,19 +23,19 @@ public class BillPaymentController {
 
 	
 
-	@PostMapping("/bills")
-	public BillPayment addBill(@RequestBody BillPayment pay,
-													@RequestBody Integer wallId
+	@PostMapping("/bills/{walletId}/{key}")
+	public String addBill(@RequestBody BillPayment pay,
+													@PathVariable("walletId") Integer wallId,
+													@PathVariable String key
 
 			) {
-		return billPayService.addBillPayment(pay,wallId);
+		return billPayService.addBillPayment(pay,wallId,key);
 	}
 	
 	@GetMapping("/bills")
-	public List<BillPayment> getBillDetails(@RequestBody BillPayment pay,
-			@RequestBody Integer wallId
-			){
-		return billPayService.viewBillPayment(pay, wallId);
+	ResponseEntity<List<BillPayment>> getBillDetails(){
+		List<BillPayment> bills = billPayService.viewBillPayment();
+		return new ResponseEntity<>(bills, HttpStatus.OK);
 		
 	}
 

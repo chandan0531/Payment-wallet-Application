@@ -16,6 +16,7 @@ import com.masai.entities.BankAccount;
 import com.masai.entities.UserSession;
 import com.masai.entities.Wallet;
 import com.masai.exception.BankAccountNotFound;
+import com.masai.exception.WalletNotFound;
 import com.masai.repository.BankAccountDao;
 import com.masai.repository.UserSessionDao;
 import com.masai.repository.WalletDao;
@@ -47,14 +48,22 @@ public class BankAccountServiceImpl implements BankAccountService {
 				
 				  Optional<Wallet> wallet =   walletdao.findByWalletId(walletId);
 				   
-				  wallet.get().getBankAccount().add(bankAccount);
-				
-				  walletdao.save(wallet.get());
+				  if(wallet.isPresent()) {
+					  wallet.get().getBankAccount().add(bankAccount);
+						
+					  walletdao.save(wallet.get());
+					  
+					//bankAccount.getWallet().setWalletId(walletId);
+					  
+				  }else {
+					  return "wallet not found";
+				  }
 				  
-				return " is successfully added..";
+				  
+				return bankAccount.getBankName()+" is successfully added..";
 		   }
 		   
-			return "not found";
+			return "user not found "+walletId;
 }
 
 
@@ -99,34 +108,25 @@ public class BankAccountServiceImpl implements BankAccountService {
 	@Override
 	public   List<BankAccount>  viewAllBankAccountByWalletId(Integer walletId) throws BankAccountNotFound {
 		
-		System.out.println("inside fun");
+	/*
+	Optional<Wallet> wallet =	 walletdao.findById(walletId);
 		
-		List<BankAccount> allbank = new ArrayList<>();
-		
-	Optional<Wallet> bankAccount = walletdao.findById(walletId);
-	
-	System.out.println(bankAccount+"dddddddddd");
-
-	if(!bankAccount.isPresent()) {
-	throw new BankAccountNotFound("bank account not found with this wallet Id");
+	if(!wallet.isPresent()) {
+		throw new WalletNotFound("wallet not found");
 	}
 	
+    List<BankAccount> banks =	wallet.get().getBankAccount();
+    
+ 
 	
-	
-	List<BankAccount>  banks =  bankAccount.get().getBankAccount();	
-	
-   banks.forEach((s->{
-
-	  s.getAccountNo();
-	  s.getBankName();
-	  
-	  
-	
-  }));
-  
-   System.out.println(banks+"ccccccccccccccccccc");
-   return banks;
-	}	
-	
+    return banks;*/
+		
+	Wallet wallet =	 walletdao.getById(walletId);
+		
+    List<BankAccount> banks =  	wallet.getBankAccount();
+    
+    
+    return banks;
+	}
 	
 }

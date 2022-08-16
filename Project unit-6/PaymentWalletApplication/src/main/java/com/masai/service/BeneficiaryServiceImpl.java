@@ -28,9 +28,9 @@ public class BeneficiaryServiceImpl implements BeneficiaryService{
 		
 		Wallet w = bd.getWallet();
 		
-		w.getBd().add(bd);
+	         w.getBd().add(bd);
 		
-//		wDao.save(w);
+//	wDao.save(w);
 		
 		return bDao.save(bd);
 		}else {
