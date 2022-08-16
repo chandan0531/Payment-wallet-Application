@@ -50,7 +50,7 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
 	
-	@ExceptionHandler(BeneficiaryException.class)
+/*	@ExceptionHandler(BeneficiaryException.class)
 	public ResponseEntity<MyErrorDetails> myExpHandler(BeneficiaryException ie, WebRequest wr)  {
 		System.out.println("inside myHandler method...");
 		
@@ -60,7 +60,7 @@ public class GlobalExceptionHandler {
 		err.setDetails(wr.getDescription(false));
 
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST );
-	}
+	}*/
 
 	
 	@ExceptionHandler(DateFormatException.class)
