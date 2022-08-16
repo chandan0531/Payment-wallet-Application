@@ -7,11 +7,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.DTO.CustomerDTO;
 import com.masai.entities.BillPayment;
 import com.masai.entities.Transaction;
+import com.masai.entities.UserSession;
 import com.masai.entities.Wallet;
 import com.masai.exception.BillPaymentNotFoundException;
+import com.masai.exception.UserNotFoundException;
 import com.masai.repository.BillPaymentDao;
 import com.masai.repository.CashbackDao;
 import com.masai.repository.UserSessionDao;
@@ -44,7 +45,12 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 
 
 	@Override
-	public String addBillPayment(BillPayment payment, Integer wallId) {
+	public String addBillPayment(BillPayment payment, Integer wallId,  String key) {
+		Optional<UserSession> optionaluserSession = sessionDao.findByUuid(key);
+		
+		if(!optionaluserSession.isPresent()) {
+			throw new UserNotFoundException("Unauthorized key");
+		}else {
 		Wallet wallet =payment.getWallet();//100
 		
 
@@ -93,18 +99,19 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 			throw new BillPaymentNotFoundException("Insufficient amount ");
 		}
 		
-		
+			
 		 
 		billDao.save(payment);
 		
 		return "Payment Done Successfully..."+"\n"+
 		"Use this Promocode To get a CashBack from 5% to 25% : "+promo ;
+		}
 	}
 
 	@Override
-	public List<BillPayment> viewBillPayment(BillPayment payment, Integer wallId) {
-		Wallet w = payment.getWallet();
-		List<BillPayment> billList = w.getBillpayment();
+	public List<BillPayment> viewBillPayment() {
+		
+		List<BillPayment> billList = billDao.findAll();
 		if(billList.size()==0) {
 			throw new BillPaymentNotFoundException("No BillPaymets in the List ");
 		}
