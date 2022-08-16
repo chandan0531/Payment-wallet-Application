@@ -208,6 +208,16 @@ public class WalletServiceImpl implements WalletService{
 
 	}
 
+	@Override
+	public Customer getCustomerbyWalletId(Integer wlletId) {
+		
+		Wallet wallet = walletDao.getById(wlletId);
+
+		Customer customer = wallet.getCustomer();
+		
+		return customer;
+	}
+
 
 	
 
