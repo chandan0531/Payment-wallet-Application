@@ -48,15 +48,22 @@ public class BankAccountServiceImpl implements BankAccountService {
 				
 				  Optional<Wallet> wallet =   walletdao.findByWalletId(walletId);
 				   
-				  wallet.get().getBankAccount().add(bankAccount);
-				
-				  walletdao.save(wallet.get());
+				  if(wallet.isPresent()) {
+					  wallet.get().getBankAccount().add(bankAccount);
+						
+					  walletdao.save(wallet.get());
+					  
+					//bankAccount.getWallet().setWalletId(walletId);
+					  
+				  }else {
+					  return "wallet not found";
+				  }
 				  
 				  
 				return bankAccount.getBankName()+" is successfully added..";
 		   }
 		   
-			return "wallet id not found "+walletId;
+			return "user not found "+walletId;
 }
 
 
@@ -101,7 +108,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 	@Override
 	public   List<BankAccount>  viewAllBankAccountByWalletId(Integer walletId) throws BankAccountNotFound {
 		
-	
+	/*
 	Optional<Wallet> wallet =	 walletdao.findById(walletId);
 		
 	if(!wallet.isPresent()) {
@@ -112,6 +119,13 @@ public class BankAccountServiceImpl implements BankAccountService {
     
  
 	
+    return banks;*/
+		
+	Wallet wallet =	 walletdao.getById(walletId);
+		
+    List<BankAccount> banks =  	wallet.getBankAccount();
+    
+    
     return banks;
 	}
 	
