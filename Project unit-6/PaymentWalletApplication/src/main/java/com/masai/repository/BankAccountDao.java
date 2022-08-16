@@ -16,4 +16,6 @@ public interface BankAccountDao extends JpaRepository<BankAccount, Integer> {
 	public Optional<BankAccount> findById(Integer accountNo);
 	
 	public Optional<BankAccount> findByAccountNo(Integer accountNo);
+
+	
 }
