@@ -6,7 +6,7 @@ import com.masai.entities.BillPayment;
 
 public interface BillPaymentService {
 	
-	public BillPayment addBillPayment(BillPayment payment, Integer wallId);
+	public String addBillPayment(BillPayment payment, Integer wallId);
 	
 	public List<BillPayment> viewBillPayment(BillPayment payment, Integer wallId);
 

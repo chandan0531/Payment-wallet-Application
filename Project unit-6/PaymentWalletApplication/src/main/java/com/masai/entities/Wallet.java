@@ -1,5 +1,6 @@
 package com.masai.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,9 +17,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -32,7 +36,7 @@ public class Wallet {
 	@NotNull
 	private double balance;
 	
-	@OneToMany(mappedBy = "wallet",cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "wallet")
 	@JsonIgnore
 	private List<BankAccount> bankAccount;
 	
@@ -48,4 +52,7 @@ public class Wallet {
 	@OneToMany
 	private List<Transaction> transactions;
 	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy = "wallet")
+	@JsonIgnore
+	private List<BeneficiaryDetails> bd = new ArrayList<>();
 }
