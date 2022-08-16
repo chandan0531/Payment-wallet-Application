@@ -57,5 +57,13 @@ public class WalletController {
 
 	}
 	
+	@GetMapping("getcustomerbywalletid/{walletId}")
+	public ResponseEntity<Customer> getCustomerController(@PathVariable Integer walletId) {
+		
+		Customer customer = walletService.getCustomerbyWalletId(walletId);
+		
+		return new ResponseEntity<Customer>(customer,HttpStatus.ACCEPTED);
+		
+	}
 
 }
