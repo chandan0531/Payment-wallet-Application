@@ -22,5 +22,5 @@ public interface WalletService {
 	
 	public List<BankAccount> bankAccountByWalletId(Integer walletId);
 	
-
+	public Customer getCustomerbyWalletId(Integer wlletId);
 }
