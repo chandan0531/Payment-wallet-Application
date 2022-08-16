@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +30,7 @@ public class Transaction {
 	
 	@CreatedDate
 	@CreationTimestamp
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate transactionDate;
 	private double amount;
 	private String description;
