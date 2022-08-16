@@ -16,9 +16,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -32,7 +35,7 @@ public class Wallet {
 	@NotNull
 	private double balance;
 	
-	@OneToMany(mappedBy = "wallet",cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "wallet")
 	@JsonIgnore
 	private List<BankAccount> bankAccount;
 	

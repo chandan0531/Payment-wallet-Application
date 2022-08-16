@@ -21,9 +21,9 @@ public class BillPaymentController {
 
 	
 
-	@PostMapping("/bills")
-	public BillPayment addBill(@RequestBody BillPayment pay,
-													@RequestBody Integer wallId
+	@PostMapping("/bills/{walletId}")
+	public String addBill(@RequestBody BillPayment pay,
+													@PathVariable("walletId") Integer wallId
 
 			) {
 		return billPayService.addBillPayment(pay,wallId);
