@@ -39,7 +39,7 @@ Following ER diagram indicates the database tables and thier interaction which w
 
 
 ## Modals
-- Login 
+- Authentication 
 - Bank Account
 - Customer
 - Wallet
