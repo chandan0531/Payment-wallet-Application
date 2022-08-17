@@ -85,7 +85,7 @@ Run the following command on swagger UI
 2.  User can get all bills details.
 
 - #### Cashback features
-1.  User can get the cashback whenwvr they pay the bills.
+1.  User can get the cashback whenever they pay the bills.
 
 - #### Transaction features
 1.  User can seen the transaction details with date wise.
