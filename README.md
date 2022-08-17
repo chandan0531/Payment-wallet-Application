@@ -15,10 +15,12 @@ Our team has created REST API Application for online payment wallet apllication 
 ## REST API Use for below functions
 - User can Login and Signup.
 - Create Bank account and wallet.
+- Delete Bank account.
 - Adding money to wallet.
+- Money Transfer from one wallet to another wallet.
 - Any Bill payments from wallet.
 - User can see transactions details from wallet.
-- Delete Bank account.
+- CashBack Section.
 
 ## Tech Stack
 - Java
@@ -27,6 +29,7 @@ Our team has created REST API Application for online payment wallet apllication 
 - Spring Boot with JPA
 - MySQL
 - Maven
+- Lombok
 - Swagger UI
 
 ## ER Diagram
@@ -65,6 +68,7 @@ Run the following command on swagger UI
 ## API Functionality are-
 - #### User features
 1.  User can login and SignUp.
+2.  User can logout.
 
 - #### Bank Account features
 1.  User can create the bank account.
@@ -85,7 +89,7 @@ Run the following command on swagger UI
 2.  User can get all bills details.
 
 - #### Cashback features
-1.  User can get the cashback whenever they pay the bills.
+1.  User can get the cashback whenever they pay the bills in range of 5% to 25%.
 
 - #### Transaction features
 1.  User can seen the transaction details with date wise.
