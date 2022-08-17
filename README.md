@@ -58,4 +58,7 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.username=root
 spring.datasource.password=12345
 ```
-    
+## Running Tests
+Run the following command on swagger UI
+![swagger](https://user-images.githubusercontent.com/101566029/185036837-17caf0e0-94c6-4280-8719-20d52e2570c3.png)
+
