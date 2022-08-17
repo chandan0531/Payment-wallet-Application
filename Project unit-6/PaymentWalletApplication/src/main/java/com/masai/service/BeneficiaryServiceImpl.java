@@ -77,7 +77,9 @@ public class BeneficiaryServiceImpl implements BeneficiaryService{
 		blist.remove(bd);
 		
 		bDao.delete(b);
-
+		
+//		wDao.save(w);
+		
 		return b;
 		}
 		else {
