@@ -29,6 +29,12 @@ Our team has created REST API Application for online payment wallet apllication 
 - Maven
 - Swagger UI
 
+## ER Diagram
+Following ER diagram indicates the database tables and thier interaction which we are using.
+![Untitled Workspace](https://user-images.githubusercontent.com/101566029/185031322-cca7cf0e-652d-4a75-8ca5-062b8d21614a.jpg)
+
+
+
 ## Modals
 - Login 
 - Bank Account
