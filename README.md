@@ -7,7 +7,7 @@ Our team has created REST API Application for online payment wallet apllication 
 
 ## Collaborators (Masai school's Student)
  - [Chandan Kumar Sharma](https://github.com/chandan0531)
- - [Gaurav Jaiswal](https://github.com/Aryan-2-2)
+ - [Gaurav Jaiswal](https://github.com/Aryan-2-2) 
  - [Shubham Kumar](https://github.com/alluShubham)
 - [Suresh Jungade](https://github.com/sureshjungade)
 - [Vamsi Krishna](https://github.com/Vamsi4612)
@@ -31,6 +31,13 @@ Our team has created REST API Application for online payment wallet apllication 
 - Maven
 - Lombok
 - Swagger UI
+
+Our contribution to Project-
+* Gaurav Jaiswal-> Authentication, Customer, BankAccount, CashBack 
+* Suresh Jungle->Wallet, UserSession
+* vamsi Krishna->Beneficiary
+* Shubham Kumar->BillPayment
+* Chandan Kumar Sharma ->Transaction
 
 ## ER Diagram
 Following ER diagram indicates the database tables and thier interaction which we are using.
