@@ -62,3 +62,36 @@ spring.datasource.password=12345
 Run the following command on swagger UI
 ![swagger](https://user-images.githubusercontent.com/101566029/185036837-17caf0e0-94c6-4280-8719-20d52e2570c3.png)
 
+## API Functionality are-
+- #### User features
+1.  User can login and SignUp.
+
+- #### Bank Account features
+1.  User can create the bank account.
+2.  User can get the account details.
+3.  User can delete the account details.
+
+- #### Customer features
+1.  Customer can save the details with bank.
+2.  Customer can update the details with bank.
+
+- #### Wallet features
+1.  User can seen the wallet balance.
+2.  User can add the money to the wallet.
+3.  User can transfer the money from wallet.
+
+- #### Bill payment features
+1.  User can pay any bill from wallet.
+2.  User can get all bills details.
+
+- #### Cashback features
+1.  User can get the cashback whenwvr they pay the bills.
+
+- #### Transaction features
+1.  User can seen the transaction details with date wise.
+2.  User can see the transaction details with wallet user.
+3. User can see all the transaction details.
+
+## Possible Next Steps/Things to improve:
+- Need to improve the Beneficiary like connection with wallet.
+- User can get the transaction details like from date - to date.
