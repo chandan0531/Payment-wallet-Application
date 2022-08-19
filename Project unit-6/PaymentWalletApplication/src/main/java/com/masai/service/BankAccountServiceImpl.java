@@ -51,9 +51,12 @@ public class BankAccountServiceImpl implements BankAccountService {
 				  if(wallet.isPresent()) {
 					  wallet.get().getBankAccount().add(bankAccount);
 						
-					  walletdao.save(wallet.get());
+	        
+				
+				
+				
+				walletdao.save(wallet.get());
 					  
-					//bankAccount.getWallet().setWalletId(walletId);
 					  
 				  }else {
 					  return "wallet not found";
@@ -107,19 +110,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 	
 	@Override
 	public   List<BankAccount>  viewAllBankAccountByWalletId(Integer walletId) throws BankAccountNotFound {
-		
-	/*
-	Optional<Wallet> wallet =	 walletdao.findById(walletId);
-		
-	if(!wallet.isPresent()) {
-		throw new WalletNotFound("wallet not found");
-	}
 	
-    List<BankAccount> banks =	wallet.get().getBankAccount();
-    
- 
-	
-    return banks;*/
 		
 	Wallet wallet =	 walletdao.getById(walletId);
 		
