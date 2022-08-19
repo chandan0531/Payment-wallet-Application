@@ -38,6 +38,7 @@ public class BillPayment {
 	private LocalDate paymentDate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Wallet wallet;
 
 }
