@@ -23,14 +23,25 @@ public class BillPaymentController {
 
 	
 
-	@PostMapping("/bills/{walletId}/{key}")
+	@PostMapping("/bills/{walletId}")
 	public String addBill(@RequestBody BillPayment pay,
-													@PathVariable("walletId") Integer wallId,
-													@PathVariable String key
+													@PathVariable("walletId") Integer wallId
 
 			) {
-		return billPayService.addBillPayment(pay,wallId,key);
+		return billPayService.addBillPayment(pay,wallId);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/bills")
 	ResponseEntity<List<BillPayment>> getBillDetails(){

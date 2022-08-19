@@ -77,7 +77,7 @@ public class TransactionServiceImpl implements TransactionService{
 	@Override
 	public List<Transaction> viewTransactionByDate(Integer walletId, String date)throws TransactionNotFoundException {
 		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 		LocalDate ld = LocalDate.parse(date, dtf);
 		
