@@ -105,4 +105,4 @@ Run the following command on swagger UI
 
 ## Possible Next Steps/Things to improve:
 - Need to improve the Beneficiary like connection with wallet.
-- User can get the transaction details like from date - to date.
+
