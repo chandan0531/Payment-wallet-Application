@@ -103,6 +103,6 @@ Run the following command on swagger UI
 2.  User can see the transaction details with wallet user.
 3. User can see all the transaction details.
 
-## Possible Next Steps/Things to improve:
+## Possible Next Steps/Things to improve:-
 - Need to improve the Beneficiary like connection with wallet.
 
