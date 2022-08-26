@@ -1,7 +1,7 @@
 
 # Online Payment wallet Application REST-API
 
-Our team has created REST API for online payment wallet application which can be used by bank's customers for different services like create bank account, login and SignUp to account, create wallet from bank account, add money to wallet, Billpayment from wallet, get transaction details from wallet etc. Also user can delete the account.
+Our team has created REST API for an online payment wallet application which can be used by bank customers for different services like creating a bank account, log in and Sign Up to an account, creating a wallet from a bank account, adding money to a wallet, Bill payment from a wallet, get transaction details from a wallet, etc.
 
 
 
