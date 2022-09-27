@@ -1,11 +1,11 @@
 
 # Online Payment wallet Application REST-API
 
-Our team has created REST API for an online payment wallet application which can be used by bank customers for different services like creating a bank account, log in and Sign Up to an account, creating a wallet from a bank account, adding money to a wallet, Bill payment from a wallet, get transaction details from a wallet, etc.
+REST API for an online payment wallet application which can be used by bank customers for different services like creating a bank account, log in and Sign Up to an account, creating a wallet from a bank account, adding money to a wallet, Bill payment from a wallet, get transaction details from a wallet, etc.
 
 
 
-## Collaborators (Masai school's Student)
+## Collaborators 
  - [Chandan Kumar Sharma](https://github.com/chandan0531)
  - [Gaurav Jaiswal](https://github.com/Aryan-2-2) 
  - [Shubham Kumar](https://github.com/alluShubham)
