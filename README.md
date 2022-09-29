@@ -34,7 +34,7 @@ REST API for an online payment wallet application which can be used by bank cust
 
 ## Our contribution to Project
 * Gaurav Jaiswal-> Authentication, Customer, BankAccount, CashBack 
-* Suresh Jungle->Wallet, UserSession
+* Suresh Jungade->Wallet, UserSession
 * vamsi Krishna->Beneficiary
 * Shubham Kumar->BillPayment
 * Chandan Kumar Sharma ->Transaction
