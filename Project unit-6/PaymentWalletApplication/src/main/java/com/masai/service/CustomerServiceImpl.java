@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masai.DTO.CustomerDTO;
 import com.masai.entities.Customer;
 import com.masai.entities.UserSession;
 import com.masai.entities.Wallet;
@@ -20,7 +21,7 @@ public class CustomerServiceImpl implements CustomerService{
 	CurrentUserSessionDetailsImpl currentuser;
 	
 	@Override
-	public Customer createCustomer(Customer customer) {
+	public CustomerDTO createCustomer(Customer customer) {
 		
 	   Optional<Customer> opt = customerDao.findByMobileNumber(customer.getMobileNumber());
 		
@@ -28,9 +29,10 @@ public class CustomerServiceImpl implements CustomerService{
 		  System.out.println("User Already Exist"); 
 	   }
 	   
-	   
-	   
-	   return customerDao.save(customer);
+	    customerDao.save(customer);
+	    CustomerDTO dto = new CustomerDTO(customer.getMobileNumber(),customer.getPassword());
+	    
+	    return dto;
 	}
 
 	@Override

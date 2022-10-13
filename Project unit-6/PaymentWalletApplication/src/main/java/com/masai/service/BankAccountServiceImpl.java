@@ -43,18 +43,12 @@ public class BankAccountServiceImpl implements BankAccountService {
 		   
 		   if(currentUser.isPresent()) {
 
-			  
-				
-				
 				  Optional<Wallet> wallet =   walletdao.findByWalletId(walletId);
 				   
 				  if(wallet.isPresent()) {
 					  wallet.get().getBankAccount().add(bankAccount);
-						
-	        
-				
-				
-				
+			          bankAccount.setWallet(wallet.get());
+					  
 				walletdao.save(wallet.get());
 					  
 					  

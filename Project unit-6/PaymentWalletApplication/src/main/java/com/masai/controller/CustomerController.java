@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.masai.DTO.CustomerDTO;
 import com.masai.service.CustomerServiceImpl;
 
 @RestController
@@ -16,7 +17,7 @@ public class CustomerController {
 	
 	
 	@PostMapping("/customer")
-	public com.masai.entities.Customer saveCustomer(@RequestBody com.masai.entities.Customer customer) {
+	public CustomerDTO saveCustomer(@RequestBody com.masai.entities.Customer customer) {
 		return customerService.createCustomer(customer);
 	}
 	

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,9 +37,8 @@ public class Wallet {
 	@NotNull
 	private double balance;
 	
-	//@JsonIgnore
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "wallet")
-	//@JoinColumn(name = "walletId")
 	private List<BankAccount> bankAccount;
 	
 	@JsonIgnore
