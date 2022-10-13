@@ -40,6 +40,7 @@ public class TransactionServiceImpl implements TransactionService{
 		Transaction transactions = tDao.save(trans);
 		transactions.setWallet(wallet);
 		
+		
 		return transactions;
 	}
 
@@ -61,6 +62,9 @@ public class TransactionServiceImpl implements TransactionService{
 				throw new WalletNotFound("Wallet not found");
 			}
 			List <Transaction>  transations = wallet.get().getTransactions();
+			
+			Transaction t = new Transaction();
+			t.setWallet(wallet.get());
 			
 			if(transations.size() >0)
 			{

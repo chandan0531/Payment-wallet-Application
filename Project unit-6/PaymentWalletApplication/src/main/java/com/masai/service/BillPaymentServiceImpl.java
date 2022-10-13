@@ -77,10 +77,11 @@ count++;
 
 
 w1.setBalance(bal-debitamt);
+payment.setWallet(opt.get());
 wDao.save(w1);
 trService.addTansaction(tr);
 
-
+billDao.save(payment);
 promo = RandomString.make(12);
 
 com.masai.entities.Cashback  c = new com.masai.entities.Cashback(promo);
